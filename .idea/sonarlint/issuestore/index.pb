@@ -11,3 +11,5 @@ F
 src/views/HomeView.vue,9/9/99762d844ac520a898fe382aaa9ad653d1dba35c
 G
 src/components/Team.vue,2/7/27fad922958a2903595b78629b48c44749898272
+G
+src/components/Hero.vue,f/d/fd133f5b3e2cb85ca9e5333e2b577db8f4f17399

@@ -4,9 +4,7 @@
 
 <template>
     
-    <div className="hero bg-base-200 min-h-[700px] max-h-96" style="
-    background-image: url('/src/assets/hero.png');
-  ">
+    <div className="hero bg-base-200 min-h-[700px] max-h-96" >
   <div className="hero-content flex-col lg:flex-row">
     
     <div>
@@ -29,3 +27,9 @@
 
 
 </template>
+<style scoped>
+.hero{
+  background-image: url('/src/assets/hero.png');
+
+}
+</style>
