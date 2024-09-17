@@ -9,6 +9,7 @@ import TheMapview from '../components/MapView.vue'
 import TheClients from '../components/Clients.vue'
 import ThePartners from '../components/Partners.vue'
 import TheTeam from '../components/Team.vue'
+import Therivews from '../components/Reviews.vue'
 </script>
 
 <template>
@@ -23,6 +24,7 @@ import TheTeam from '../components/Team.vue'
     <TheClients/>
     <ThePartners/>
     <TheTeam/>
+    <Therivews/>
 
   </main>
 </template>
