@@ -1,32 +1,4 @@
-<!--<script setup>-->
-<!--import {defineProps} from 'vue';-->
 
-<!--const props = defineProps({-->
-<!--  item: {-->
-<!--    type: Object,-->
-<!--    required: true-->
-<!--  }-->
-<!--});-->
-<!--</script>-->
-
-<!--<template>-->
-<!--  &lt;!&ndash; Open the modal using ID.showModal() method &ndash;&gt;-->
-<!--  <button class="btn" onclick="my_modal_2.showModal()">open modal</button>-->
-<!--  <dialog id="my_modal_2" v-if="item" class="modal bg-black-200">-->
-<!--    <div class="modal-box rounded-box bg-white">-->
-<!--      <h3 class="text-lg font-bold">{{item.title}}</h3>-->
-<!--      <p class="py-4">Press ESC key or click outside to close</p>-->
-
-<!--    </div>-->
-<!--    <form method="dialog" class="modal-backdrop">-->
-<!--      <button>close</button>-->
-<!--    </form>-->
-<!--  </dialog>-->
-<!--</template>-->
-
-<!--<style scoped>-->
-
-<!--</style>-->
 <script setup>
 import {defineProps, watch} from 'vue';
 
