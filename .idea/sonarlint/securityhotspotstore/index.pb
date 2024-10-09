@@ -78,3 +78,5 @@ M
 src/components/home/stats.vue,6/b/6bf14e6baece9c5361319262a649823c098653d1
 L
 src/components/home/Team.vue,b/4/b448839831cf7a66c695bf1a988b56bedb7c1eee
+O
+src/components/jobs/ViewJob.vue,e/e/ee7864795ff0d77f9d1749e11953d4bb378f652a

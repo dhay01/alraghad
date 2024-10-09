@@ -1,28 +1,37 @@
 <script setup>
-import img1 from '@/assets/111.jpg';
-import img2 from '@/assets/112.jpg';
-import img3 from '@/assets/113.jpg';
-import img4 from '@/assets/114.jpg';
-import img5 from '@/assets/115.jpg';
-import img6 from '@/assets/116.jpg';
-import img7 from '@/assets/117.jpg';
-import img8 from '@/assets/118.jpg';
-import img9 from '@/assets/119.jpg';
+import { ref, onMounted } from 'vue';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../includes/firebase';
 
-// Image list
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+// Store the logos array
+const partners = ref([]);
 
-// Function to pause the animation on hover
+// Fetch logos from Firestore
+async function fetchLogos() {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'partners'));
+    partners.value = querySnapshot.docs.map(doc => doc.data().logo); // Fetch 'logo' field correctly
+  } catch (error) {
+    console.error("Error fetching logos: ", error);
+  }
+}
+
+// Pause carousel scroll on hover
 const pauseScroll = () => {
   const track = document.querySelector('.carousel-track');
   if (track) track.style.animationPlayState = 'paused';
 };
 
-// Function to resume the animation after hover
+// Resume carousel scroll after hover
 const resumeScroll = () => {
   const track = document.querySelector('.carousel-track');
   if (track) track.style.animationPlayState = 'running';
 };
+
+// Fetch logos on mount
+onMounted(() => {
+  fetchLogos();
+});
 </script>
 
 <template>
@@ -35,18 +44,17 @@ const resumeScroll = () => {
         @mouseleave="resumeScroll"
     >
       <div class="carousel-track">
-        <!-- Duplicating the images array to create the infinite scroll effect -->
-        <div v-for="(image, index) in images" :key="'first-' + index" class="carousel__item">
-          <img :src="image" alt="Logo" />
+        <!-- Loop through the fetched logos and display them -->
+        <div v-for="(logo, index) in partners" :key="'first-' + index" class="carousel__item">
+          <img :src="logo" alt="Logo" />
         </div>
-        <div v-for="(image, index) in images" :key="'second-' + index" class="carousel__item">
-          <img :src="image" alt="Logo" />
+        <div v-for="(logo, index) in partners" :key="'second-' + index" class="carousel__item">
+          <img :src="logo" alt="Logo" />
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <style scoped>
 .carousel-container {
   display: flex;
