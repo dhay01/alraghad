@@ -10,7 +10,7 @@ import TheClients from '../components/home/Clients.vue';
 import ThePartners from '../components/home/Partners.vue';
 import TheTeam from '../components/home/Team.vue';
 import TheReviews from '../components/home/Reviews.vue';
-import TheMarquee from '../components/home/Marquee.vue';
+
 </script>
 
 <template>
