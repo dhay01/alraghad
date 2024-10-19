@@ -51,6 +51,9 @@ onMounted(() => {
         <div v-for="(logo, index) in partners" :key="'second-' + index" class="carousel__item">
           <img :src="logo" alt="Logo" />
         </div>
+        <div v-for="(logo, index) in partners" :key="'third-' + index" class="carousel__item">
+          <img :src="logo" alt="Logo" />
+        </div>
       </div>
     </div>
   </div>

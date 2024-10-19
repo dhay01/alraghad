@@ -6,6 +6,7 @@ import Clients from '@/components/clients/Clients.vue'
 import WhatWeOffer from "@/components/whatweoffer/WhatWeOffer.vue";
 import AboutView from "@/views/AboutView.vue";
 import ProjectsView from "@/components/projects/ProjectsView.vue";
+import Certificates from "@/components/certificates/Certificates.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -44,6 +45,11 @@ const router = createRouter({
             path: "/projects",
             name: "projects",
             component: ProjectsView
+        },
+        {
+            path: '/certificates',
+            name: 'certificates of appreciation',
+            component: Certificates
         }
     ]
 })

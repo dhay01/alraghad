@@ -44,17 +44,24 @@ function toggleMenu() {
           <li>
             <RouterLink to="/clients">clients</RouterLink>
           </li>
-          <li><a>awards and certificates</a></li>
+          <li>
+            <RouterLink to="/certificates">certificates</RouterLink>
+
+
+          </li>
           <li>
             <RouterLink to="/jobs">jobs</RouterLink>
           </li>
           <li>
+           <a>company profile</a>
+          </li>
+          <li>
             <details>
               <summary>language</summary>
-              <ul class="bg-gray-200 rounded-t-none p-2">
-                <li><a>Link 1</a></li>
-                <li><a>Link 2</a></li>
-              </ul>
+<!--              <ul class="bg-gray-200 rounded-t-none p-2">-->
+<!--                <li><a>arabic</a></li>-->
+<!--                <li><a>english</a></li>-->
+<!--              </ul>-->
             </details>
           </li>
         </ul>

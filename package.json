@@ -15,6 +15,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@primevue/themes": "^4.0.7",
+    "@selemondev/vue3-marquee": "^0.0.8",
     "firebase": "^10.13.2",
     "pinia": "^2.1.7",
     "primevue": "^4.0.7",
@@ -22,7 +23,8 @@
     "vue-carousel": "^0.18.0",
     "vue-number-animation": "^2.0.2",
     "vue-router": "^4.3.3",
-    "vue3-carousel": "^0.3.4"
+    "vue3-carousel": "^0.3.4",
+    "vue3-marquee": "^4.2.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",

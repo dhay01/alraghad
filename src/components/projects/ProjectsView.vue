@@ -6,7 +6,7 @@ import { db } from '../../includes/firebase';
 import Spinner from "@/components/Spinner.vue";
 import empty from "@/assets/empty.png";
 
-const categories = ['AC', 'MEP', 'Lifts', 'Pumps', 'Water', 'Ventilation'];
+const categories = ['MEP', 'AC',  'Lifts', 'Pumps', 'Water', 'Ventilation'];
 const selectedCategory = ref(categories[0]);
 const filteredProjects = ref([]);
 const isLoading = ref(true);

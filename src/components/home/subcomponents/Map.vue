@@ -25,7 +25,7 @@ const handleMouseMove = (event) => {
 
     <div class="map-container px-4 py-4 sm:block hidden " style=" position: relative;" @mousemove="handleMouseMove" @mouseleave="hideCard">
 
-    <svg stroke="#E2E2E2 " stroke-width="0.5"  stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none"
+    <svg stroke="#bdb3da " stroke-width="0.5"  stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none"
    xmlns:mapsvg="http://mapsvg.com"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -165,10 +165,13 @@ const handleMouseMove = (event) => {
 <style scoped>
 
 *{
-    fill: #422A86 ;
+    fill: #f2f2f2 ;
+
 }
 *:hover{
-    fill: #f2f2f2  ;
+    fill: #422A86  ;
+
+
     transition: fill 0.3s ease-in-out;
 }
 .floating-card {

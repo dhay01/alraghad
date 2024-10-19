@@ -8,6 +8,7 @@ import image6 from '@/assets/ministry-of-defence.png';
 
 // Image list
 const images = [image1, image2, image3, image4, image5, image6];
+const reversedImages = [...images].reverse(); // Reverse the images array
 
 // Function to pause the animation on hover
 const pauseScroll = () => {
@@ -39,7 +40,7 @@ const resumeScroll = () => {
         <div v-for="(image, index) in images" :key="'first-' + index" class="carousel__item">
           <img :src="image" alt="Logo" />
         </div>
-        <div v-for="(image, index) in images" :key="'second-' + index" class="carousel__item">
+        <div v-for="(image, index) in reversedImages" :key="'second-' + index" class="carousel__item">
           <img :src="image" alt="Logo" />
         </div>
       </div>

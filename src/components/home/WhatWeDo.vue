@@ -1,7 +1,7 @@
 <script setup>
-import { db } from '../../includes/firebase.js';
-import { collection, getDocs } from 'firebase/firestore';
-import { ref, onMounted } from 'vue';
+import {db} from '../../includes/firebase.js';
+import {collection, getDocs} from 'firebase/firestore';
+import {ref, onMounted} from 'vue';
 import {RouterLink} from "vue-router";
 
 const data = ref([]);
@@ -9,7 +9,8 @@ const data = ref([]);
 async function fetchData() {
   try {
     const querySnapshot = await getDocs(collection(db, "offers"));
-    data.value = querySnapshot.docs.map(doc => doc.data());
+    data.value = querySnapshot.docs.map(doc => doc.data()).sort((a, b) => a.no - b.no); // Sort by 'no' field in ascending order
+
   } catch (error) {
     console.error("Error fetching data: ", error);
   }
@@ -26,7 +27,7 @@ onMounted(fetchData);
         <div class="card w-full h-full min-h-[250px] lg:min-h-[200px]" :style="`background-color:${item.bg}`">
           <div class="card-body flex flex-col justify-between">
             <RouterLink to="/what-we-offer">
-              <img :src="item.icon" alt="Icon" width="60" class="mb-4" />
+              <img :src="item.icon" alt="Icon" width="60" class="mb-4"/>
               <div class="text-black">
                 <h1 class="text-lg py-2">{{ item.title }}</h1>
                 <p class="text-sm">{{ item.description }}</p>

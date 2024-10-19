@@ -13,7 +13,7 @@ async function fetchTeam() {
           id: doc.id,
           ...doc.data()
         }))
-        .reverse(); // Reverse the array
+        .sort((a, b) => a.no - b.no); // Sort by 'no' field in ascending order
   } catch (error) {
     console.error("Error fetching team members: ", error);
   }
@@ -23,23 +23,42 @@ onMounted(fetchTeam);
 </script>
 
 <template>
-  <div class="px-5 md:px-20 py-10">
+  <div class="px-5 md:px-20 py-10 bg-[#F6F6F6]">
     <h1 class="text-left text-3xl md:text-5xl py-10 text-black">Meet our team</h1>
 
     <div class="carousel carousel-center rounded-box max-w-full space-x-4 md:space-x-10 p-4">
-      <div v-for="member in team" :key="member.id" class="carousel-item">
-        <div class="team-member h-[200px] w-[150px] md:h-[350px] md:w-[250px] rounded-2xl relative overflow-hidden"
+      <div v-for="member in team" :key="member.id"  class="carousel-item">
+        <div class="team-member h-[200px] w-[150px]  md:h-[350px] md:w-[250px] rounded-2xl relative overflow-hidden"
              :style="{ backgroundImage: `url(${member.photo})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
-          <div class="gradient-overlay"></div>
-          <h1 class="text-xl md:text-3xl pt-28 md:pt-60 px-4 text-white">{{ member.name }}</h1>
-          <p class="py-2 px-4 text-sm md:text-xl text-white">{{ member.position }}</p>
+          <div class="gradient-overlay hidden group-hover:block"></div>
+          <h1 class="text-xl md:text-xl pt-28 md:pt-60 px-4 text-white hidden group-hover:block">{{ member.name }}</h1>
+          <p class="py-2 px-4 text-sm md:text-md text-white hidden group-hover:block">{{ member.position }}</p>
         </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <style scoped>
+.team-member {
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+.team-member:hover .gradient-overlay,
+.team-member:hover h1,
+.team-member:hover p {
+  display: block;
+}
+
+
+
 .carousel-item {
   flex: 0 0 auto;
 }
@@ -54,7 +73,7 @@ onMounted(fetchTeam);
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0));
   z-index: 1; /* Ensure overlay is above the background image */
 }
 

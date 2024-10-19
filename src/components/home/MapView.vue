@@ -4,7 +4,7 @@ import {RouterLink} from "vue-router";
 </script>
 
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 bg-[#F6F6F6]">
+  <div class="grid grid-cols-1 mb-10 md:grid-cols-2 ">
     <div class="flex items-center justify-center">
       <iraqmap/>
     </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { defineProps } from 'vue';
 import { db } from '../../includes/firebase';
 import { doc, getDoc } from 'firebase/firestore';
@@ -32,6 +32,8 @@ async function fetchProject() {
     isLoading.value = false; // Set loading to false after fetch
   }
 }
+const hasVirtualTour = computed(() => project.value && project.value.virtualTour);
+
 
 onMounted(() => {
   window.scrollTo(0, 0);
@@ -96,11 +98,14 @@ onMounted(() => {
       </div>
 
       <!-- Photo Library -->
-      <PhotoLibrary :images="project.photos"/>
+
+        <PhotoLibrary :images="project.photos"/>
+
+
 
       <!-- Virtual Tour -->
-      <div class="w-full my-8 flex justify-center">
-        <div class="matterport-tour" style="width: 100%; max-width: 800px;">
+      <div v-if="hasVirtualTour" class="w-full my-8 flex justify-center">
+        <div class="matterport-tour" style="width: 100%; max-width: 1150px;">
           <iframe
               width="100%"
               height="600"
