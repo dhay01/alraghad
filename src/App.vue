@@ -81,7 +81,7 @@ function toggleMenu() {
         <li>
           <RouterLink to="/clients" @click="toggleMenu">clients</RouterLink>
         </li>
-        <li><a @click="toggleMenu">awards and certificates</a></li>
+<!--        <li><a @click="toggleMenu">awards and certificates</a></li>-->
         <li>
           <RouterLink to="/jobs" @click="toggleMenu">jobs</RouterLink>
         </li>

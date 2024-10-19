@@ -90,3 +90,5 @@ O
 src/components/home/marquee.vue,1/c/1c5d1d71ed5c55f3d3ad249f6c72fd56b5d2a6e6
 O
 src/components/home/Marquee.vue,4/d/4d13feb361bd1b9c08c2bdf747ed607f790ecb52
+[
++src/components/certificates/Certificate.vue,0/0/0045d5601e5844e304c7d668b8d1d898d19f03ae
