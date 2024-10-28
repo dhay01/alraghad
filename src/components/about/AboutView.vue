@@ -1,13 +1,13 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, onMounted} from 'vue';
 
-// Initialize openSection with the first section to be open by default
 const openSection = ref('overview');
 
-// Function to toggle collapse sections
 function toggleSection(section) {
   openSection.value = openSection.value === section ? null : section;
 }
+
+
 </script>
 
 <template>
@@ -99,108 +99,10 @@ function toggleSection(section) {
         </ul>
       </div>
     </div>
-    <!--    <ul class="timeline">-->
-    <!--      <li>-->
-    <!--        <div class="timeline-start mb-10 md:text-end">-->
-    <!--          <time class=" text-2xl font-black ">1984</time>-->
 
-    <!--          <div class="w-96">-->
-    <!--            The Apple Macintosh—later rebranded as the Macintosh 128K—is the original Apple Macintosh-->
-    <!--            personal computer. It played a pivotal role in establishing desktop publishing as a general-->
-    <!--            office function. The motherboard, a 9 in (23 cm) CRT monitor, and a floppy drive were housed-->
-    <!--            in a beige case with integrated carrying handle; it came with a keyboard and single-button-->
-    <!--            mouse.-->
-    <!--          </div>-->
-
-    <!--        </div>-->
-
-    <!--        <div class="timeline-middle">-->
-    <!--          <svg-->
-    <!--              xmlns="http://www.w3.org/2000/svg"-->
-    <!--              viewBox="0 0 20 20"-->
-    <!--              fill="currentColor"-->
-    <!--              class="h-5 w-5">-->
-    <!--            <path-->
-    <!--                fill-rule="evenodd"-->
-    <!--                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"-->
-    <!--                clip-rule="evenodd"/>-->
-    <!--          </svg>-->
-    <!--        </div>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--      </li>-->
-    <!--      <li>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--        <div class="timeline-middle">-->
-    <!--          <svg-->
-    <!--              xmlns="http://www.w3.org/2000/svg"-->
-    <!--              viewBox="0 0 20 20"-->
-    <!--              fill="currentColor"-->
-    <!--              class="h-5 w-5">-->
-    <!--            <path-->
-    <!--                fill-rule="evenodd"-->
-    <!--                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"-->
-    <!--                clip-rule="evenodd"/>-->
-    <!--          </svg>-->
-    <!--        </div>-->
-    <!--        <div class="timeline-end timeline-box">iMac</div>-->
-
-    <!--        <hr style="background-color: black"/>-->
-    <!--      </li>-->
-    <!--      <li>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--        <div class="timeline-start timeline-box">iPod</div>-->
-    <!--       -->
-    <!--        <div class="timeline-middle">-->
-    <!--          <svg-->
-    <!--              xmlns="http://www.w3.org/2000/svg"-->
-    <!--              viewBox="0 0 20 20"-->
-    <!--              fill="currentColor"-->
-    <!--              class="h-5 w-5">-->
-    <!--            <path-->
-    <!--                fill-rule="evenodd"-->
-    <!--                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"-->
-    <!--                clip-rule="evenodd"/>-->
-    <!--          </svg>-->
-    <!--        </div>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--      </li>-->
-    <!--      <li>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--        <div class="timeline-middle">-->
-    <!--          <svg-->
-    <!--              xmlns="http://www.w3.org/2000/svg"-->
-    <!--              viewBox="0 0 20 20"-->
-    <!--              fill="currentColor"-->
-    <!--              class="h-5 w-5">-->
-    <!--            <path-->
-    <!--                fill-rule="evenodd"-->
-    <!--                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"-->
-    <!--                clip-rule="evenodd"/>-->
-    <!--          </svg>-->
-    <!--        </div>-->
-    <!--        <div class="timeline-end timeline-box">iPhone</div>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--      </li>-->
-    <!--      <li>-->
-    <!--        <hr style="background-color: black"/>-->
-    <!--        <div class="timeline-start timeline-box">Apple Watch</div>-->
-    <!--        <div class="timeline-middle">-->
-    <!--          <svg-->
-    <!--              xmlns="http://www.w3.org/2000/svg"-->
-    <!--              viewBox="0 0 20 20"-->
-    <!--              fill="currentColor"-->
-    <!--              class="h-5 w-5">-->
-    <!--            <path-->
-    <!--                fill-rule="evenodd"-->
-    <!--                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"-->
-    <!--                clip-rule="evenodd"/>-->
-    <!--          </svg>-->
-    <!--        </div>-->
-    <!--      </li>-->
-    <!--    </ul>-->
 
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+
       <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
         <div class="timeline-middle">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
@@ -210,8 +112,10 @@ function toggleSection(section) {
         </div>
         <div class="timeline-start mb-10 md:text-end">
 
-          <div class="text-lg font-black">2009</div>
-          Designated as first-class contractors
+          <div class="text-lg font-black">1983</div>
+          Established in baghdad, iraq.
+          <br/>
+          1989: Established a Factory Specializing in HVAC System Manufacturing
         </div>
         <hr class="timeline-hr"/>
       </li>
@@ -226,21 +130,134 @@ function toggleSection(section) {
         </div>
         <div class="timeline-end mb-10">
 
-          <div class="text-lg font-black">2010</div>
-          Certified for compliance with GOST R ISO 9001-2008
-          (ISO 9001:2008)
+          <div class="text-lg font-black">1990</div>
+          Commenced manufacturing air washers, air handling units, and fan coil units
         </div>
         <hr class="timeline-hr"/>
       </li>
       <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
         <hr style="background-color: black"/>
         <div class="timeline-middle">
-       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                class="h-5 w-5">>
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
           </svg>
         </div>
         <div class="timeline-start mb-10 md:text-end">
+
+          <div class="text-lg font-black">1991</div>
+          • Installing a central air conditioning system at Nasiriyah station<br/>
+          • Pivotal milestones reached through the preparation of MEP business materials for the Amwaj Hotel<br/>
+          • Implementation of cooling and elevator systems at Ibn al-Haytham Hospital<br/>
+        </div>
+        <hr class="timeline-hr"/>
+      </li>
+      <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
+        <hr class="timeline-hr"/>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+               class="h-5 w-5">>
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+          </svg>
+        </div>
+        <div class="timeline-end mb-10">
+
+          <div class="text-lg font-black">1995</div>
+          • Installed cooling and ventilation systems for the Olympic swimming pool, replaced pumps for the Abu Ghraib
+          Irrigation Project<br/>
+          • Equipped seed testing devices, refrigerators, and freezers for the Abu Ghraib Seeds HQ
+        </div>
+        <hr class="timeline-hr"/>
+      </li>
+      <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
+        <hr class="timeline-hr"/>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+               class="h-5 w-5">>
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+          </svg>
+        </div>
+        <div class="timeline-start mb-10 md:text-end">
+
+          <div class="text-lg font-black">2000</div>
+          • Replaced pumps & associated accessories at the Abu Ghraib Pumping Station<br/>
+          • Replaced air washers & ventilation devices at Al-Musaib Power Station<br/>
+          • Completed the HVAC system and fire suppression system for Jalal Hospital & replaced eight air handlers at
+          Al-Kadhimiya Hosp.
+        </div>
+        <hr class="timeline-hr"/>
+      </li>
+      <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
+        <hr class="timeline-hr"/>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+               class="h-5 w-5">>
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+          </svg>
+        </div>
+        <div class="timeline-end mb-10">
+
+          <div class="text-lg font-black">2004</div>
+          • Initiated operations in Amman, Jordan, catering to various Middle Eastern countries
+          including Syria, Lebanon, and Jordan.
+        </div>
+        <hr class="timeline-hr"/>
+      </li>
+      <!------new-->
+      <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
+        <hr class="timeline-hr"/>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+               class="h-5 w-5">>
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+          </svg>
+        </div>
+        <div class="timeline-start mb-10 md:text-end">
+
+          <div class="text-lg font-black">2006</div>
+          Awarded contracts for deep piling foundation projects
+        </div>
+        <hr class="timeline-hr"/>
+      </li>
+      <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
+        <hr class="timeline-hr"/>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+               class="h-5 w-5">>
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+          </svg>
+        </div>
+        <div class="timeline-end mb-10">
+
+          <div class="text-lg font-black">2009</div>
+          Designated as first-class contractors
+        </div>
+        <hr class="timeline-hr"/>
+      </li>
+      <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
+        <hr class="timeline-hr"/>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+               class="h-5 w-5">>
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+          </svg>
+        </div>
+        <div class="timeline-start mb-10 md:text-end">
+
+          <div class="text-lg font-black">2010</div>
+          Certified for compliance with GOST R ISO 9001-2008 (ISO 9001:2008)
+        </div>
+        <hr class="timeline-hr"/>
+      </li>
+      <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
+        <hr class="timeline-hr"/>
+        <div class="timeline-middle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+               class="h-5 w-5">>
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
+          </svg>
+        </div>
+        <div class="timeline-end mb-10">
 
           <div class="text-lg font-black">2011</div>
           The PEOPLE INVESTOR 2011 Award from the Russian Managers Association for the “Outstanding Regional Project
@@ -257,7 +274,7 @@ function toggleSection(section) {
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
           </svg>
         </div>
-        <div class="timeline-end mb-10">
+        <div class="timeline-start mb-10 md:text-end">
 
           <div class="text-lg font-black">2013</div>
           Agreement between Pibiviesse, Italian manufacturer of engineering valves and components, a division of CIRCOR,
@@ -268,12 +285,12 @@ function toggleSection(section) {
       <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
         <hr class="timeline-hr"/>
         <div class="timeline-middle">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                class="h-5 w-5">>
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
           </svg>
         </div>
-        <div class="timeline-start mb-10 md:text-end">
+        <div class="timeline-end mb-10">
 
           <div class="text-lg font-black">2015</div>
           Participation in the 2nd International Fair & Conference in Missan Governorate, Iraq
@@ -283,12 +300,12 @@ function toggleSection(section) {
       <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
         <hr class="timeline-hr"/>
         <div class="timeline-middle">
-         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                class="h-5 w-5">>
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
           </svg>
         </div>
-        <div class="timeline-end mb-10">
+        <div class="timeline-start mb-10 md:text-end">
 
           <div class="text-lg font-black">2022</div>
           Climatech – As a sister company, Climatech collaborates with us to enhance our ability to provide
@@ -296,15 +313,16 @@ function toggleSection(section) {
         </div>
         <hr class="timeline-hr"/>
       </li>
+      <!--      ------->
       <li class="hover:text-[#E62D18]" style="transition:  0.3s ease-in-out;">
         <hr class="timeline-hr"/>
         <div class="timeline-middle">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor"
                class="h-5 w-5">>
             <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512z"/>
           </svg>
         </div>
-        <div class="timeline-start mb-10 md:text-end">
+        <div class="timeline-end mb-10">
 
           <div class="text-lg font-black">2024</div>
           Acquired the franchise for Patchi and established the supply and installation of Patchi’s MEP supply and

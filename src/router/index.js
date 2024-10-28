@@ -4,7 +4,7 @@ import ProjectDetails from '@/components/project/ProjectDetails.vue'
 import Jobs from '@/components/jobs/Jobs.vue'
 import Clients from '@/components/clients/Clients.vue'
 import WhatWeOffer from "@/components/whatweoffer/WhatWeOffer.vue";
-import AboutView from "@/views/AboutView.vue";
+import AboutView from "@/components/about/AboutView.vue";
 import ProjectsView from "@/components/projects/ProjectsView.vue";
 import Certificate from "@/components/certificates/Certificate.vue";
 const router = createRouter({

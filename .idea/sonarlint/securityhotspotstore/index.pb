@@ -92,3 +92,5 @@ Q
 !src/assets/Al RAGHAD Logo - c.svg,1/a/1a738587289a52c3c942412a36be938c3d2ba9ab
 P
  src/components/Logoanimation.vue,d/a/da2444a2ed543fe3bb5677373af6eab8092a847c
+R
+"src/components/about/AboutView.vue,e/3/e302d0a1dd3320530f85ffb4324b2e92e7efd407

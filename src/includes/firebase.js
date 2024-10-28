@@ -23,5 +23,6 @@ const team = collection(db, "team");
 const projects = collection(db, "projects");
 const hero = collection(db, "hero");
 const certificates = collection(db, "certificates");
+const timeline = collection(db, "timeline");
 
-export {db, offers, jobs, partners, clients, team, projects, hero, certificates};
+export {db, offers, jobs, partners, clients, team, projects, hero, certificates, timeline};
