@@ -6,6 +6,7 @@ import {db} from '../../includes/firebase';
 import Spinner from "@/components/Spinner.vue";
 import ViewJob from "@/components/jobs/ViewJob.vue";
 
+
 // Define reactive state for jobs and loading state
 const jobs = ref([]);
 const isLoading = ref(true);
@@ -41,6 +42,7 @@ function openModal(job) {
 
 <template>
   <div class="container min-h-screen mx-auto px-10 py-20">
+
     <!-- Loading Spinner -->
     <div v-if="isLoading" class="text-center md:px-[48%] px-[40%] py-[10%] md:py-[20%]">
       <Spinner />
@@ -59,7 +61,7 @@ function openModal(job) {
         </p>
 
       </div>
-      <hr class="w-36"/>
+
       <h1 class="text-3xl font-bold py-6 text-black">open positions</h1>
       <div v-for="job in jobs" :key="job.id" class="mb-8">
         <h2 @click="openModal(job)" class="text-2xl underline cursor-pointer text-[#422A86] font-bold">

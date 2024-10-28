@@ -10,6 +10,12 @@ const isMenuOpen = ref(false);
 function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value;
 }
+function downloadCompanyProfile() {
+  const link = document.createElement('a');
+  link.href = '/company-profile.pdf';  // Update the path if necessary
+  link.download = 'Company_Profile.pdf';  // Set the desired file name for download
+  link.click();
+}
 </script>
 
 <template>
@@ -53,7 +59,7 @@ function toggleMenu() {
             <RouterLink to="/jobs">jobs</RouterLink>
           </li>
           <li>
-           <a>company profile</a>
+           <a @click="downloadCompanyProfile">company profile</a>
           </li>
           <li>
             <details>

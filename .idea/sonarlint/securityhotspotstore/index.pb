@@ -82,13 +82,13 @@ O
 src/components/jobs/ViewJob.vue,e/e/ee7864795ff0d77f9d1749e11953d4bb378f652a
 E
 src/stores/counter.js,c/7/c745fc6cfc7a0166d2e08652574e7c47ea89fa80
-\
-,src/components/certificates/Certificates.vue,a/9/a9f6bf0bd3609967256c0bea5147b147133b4de7
 O
 src/components/home/Clients.vue,8/4/84426877b26961709f8b973e960ad6e674259c78
-O
-src/components/home/marquee.vue,1/c/1c5d1d71ed5c55f3d3ad249f6c72fd56b5d2a6e6
-O
-src/components/home/Marquee.vue,4/d/4d13feb361bd1b9c08c2bdf747ed607f790ecb52
 [
 +src/components/certificates/Certificate.vue,0/0/0045d5601e5844e304c7d668b8d1d898d19f03ae
+M
+src/components/home/Stats.vue,6/d/6da75f1de8510aa71b0c8166cdbc101e64cfb8d9
+Q
+!src/assets/Al RAGHAD Logo - c.svg,1/a/1a738587289a52c3c942412a36be938c3d2ba9ab
+P
+ src/components/Logoanimation.vue,d/a/da2444a2ed543fe3bb5677373af6eab8092a847c

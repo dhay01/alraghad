@@ -11,14 +11,14 @@ const props = defineProps({
 });
 
 const router = useRouter();
-const isLoading = ref(true); // Track the image loading state
+const isLoading = ref(true);
 
 function navigateToProject() {
   router.push({name: 'project-details', params: {id: props.project.id}});
 }
 
 function handleImageLoad() {
-  isLoading.value = false; // Set loading to false once the image has loaded
+  isLoading.value = false;
 }
 </script>
 <template>
@@ -83,9 +83,9 @@ function handleImageLoad() {
   animation: pulse 1.5s infinite;
 }
 
-/* Match the height of the skeleton to the photo height */
+
 .skeleton {
-  height: 20rem; /* Adjust this value as needed */
+  height: 20rem;
 }
 
 @keyframes pulse {

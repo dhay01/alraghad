@@ -10,7 +10,7 @@ import {RouterLink} from "vue-router";
     </div>
     <div class="flex items-center justify-center px-4 md:px-10 py-8">
       <div>
-        <RouterLink to="/projects"><h1 class="text-3xl  md:text-5xl text-[#422A86] flex items-center">
+        <RouterLink to="/projects"><h1 class="text-3xl  md:text-5xl flex items-center">
 
           we’re all across iraq
           <span class="ml-2">
