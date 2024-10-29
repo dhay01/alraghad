@@ -72,7 +72,7 @@ onMounted(() => {
 
 .carousel-track {
   display: flex;
-  animation: scroll 20s linear infinite;
+  animation: scroll 250s linear infinite;
   white-space: nowrap;
 }
 
@@ -80,6 +80,8 @@ onMounted(() => {
   flex: 0 0 auto;
   width: 100px;
   margin-right: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .carousel__item img {

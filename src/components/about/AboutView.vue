@@ -84,21 +84,7 @@ function toggleSection(section) {
     </div>
 
     <!-- Milestones Section -->
-    <div
-        tabindex="0"
-        :class="['collapse', 'collapse-arrow', 'my-10', { 'collapse-open': openSection === 'milestones' }]"
-        @click="toggleSection('milestones')">
-      <div class="collapse-title text-xl font-medium text-gray-700">Key Milestones</div>
-      <div class="collapse-content text-lg text-gray-600 leading-relaxed">
-        <ul class="list-disc list-inside">
-          <li>1983: Established in Baghdad, Iraq</li>
-          <li>1989: Established a Factory Specializing in HVAC System Manufacturing</li>
-          <li>1990: Commenced manufacturing air washers, air handling units, and fan coil units</li>
-          <li>1995: Major projects completed for Babylon Hospital, Olympic swimming pool, and Abu Ghraib projects</li>
-          <li>2009: Designated as first-class contractors</li>
-        </ul>
-      </div>
-    </div>
+    <div class="mt-24 mb-24 collapse-title text-2xl font-medium text-gray-700">Key Milestones</div>
 
 
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">

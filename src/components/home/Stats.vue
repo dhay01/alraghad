@@ -29,11 +29,11 @@ function handleIntersection(entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       // Animate numbers when the section comes into view
-      animateValue(obj1, 0, 180, 5000);  // Completed projects
+      animateValue(obj1, 0, 100, 5000);  // Completed projects
       animateValue(obj2, 0, 50, 5000);  // Ongoing projects
       animateValue(obj3, 0, 10, 5000); // Satisfied clients
       animateValue(obj4, 0, 100, 5000);  // Qualified engineers
-      animateValue(obj5, 0, 50000, 5000);  // Qualified engineers
+      animateValue(obj5, 0, 50, 5000);  // Qualified engineers
       observer.disconnect();  // Stop observing once the animation is triggered
     }
   });
@@ -67,7 +67,7 @@ onBeforeUnmount(() => {
 
     <div class="flex  flex-wrap w-[95%] ml-auto mr-auto justify-between gap-2 py-20">
       <div class="counter-container text-hover cursor-pointer w-36 text-left">
-        <div class=" text-hover-child counter">{{ obj1 }}</div>
+        <div class=" text-hover-child counter">+{{ obj1 }}</div>
         <div class=" text-lg sm:text-xl md:text-xl text-black">Projects Delivered</div>
       </div>
         <div class="counter-container text-hover cursor-pointer w-36 text-left">
@@ -78,10 +78,10 @@ onBeforeUnmount(() => {
         <div class="text-hover-child counter">{{ obj3 }}</div>
         <div class=" text-lg sm:text-xl md:text-xl text-black">Different types of spaces</div>
       </div>
-       <div class="counter-container text-hover cursor-pointer w-36 text-left">
-        <div class="text-hover-child counter">{{ obj4 }}</div>
-        <div class="text-lg sm:text-xl md:text-xl text-black">Brands</div>
-      </div>
+<!--       <div class="counter-container text-hover cursor-pointer w-36 text-left">-->
+<!--        <div class="text-hover-child counter">{{ obj4 }}</div>-->
+<!--        <div class="text-lg sm:text-xl md:text-xl text-black">Brands</div>-->
+<!--      </div>-->
        <div class="counter-container text-hover cursor-pointer w-36 text-left">
         <div class="text-hover-child counter">+{{ obj5 }}</div>
         <div class=" text-lg sm:text-xl md:text-xl text-black">Number of employees</div>

@@ -49,8 +49,6 @@ Y
 )src/components/home/subcomponents/Map.vue,b/7/b730c7ed5f50dd2fd8a9520519598e88e3101346
 Z
 *src/components/whatweoffer/WhatWeOffer.vue,3/3/33ab40c3be2f59c9d8e42a7cd1884867317c76f1
-G
-src/views/AboutView.vue,2/6/26ef00bb12476a7d10f82db100a9d92a643de871
 <
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 W
@@ -90,7 +88,11 @@ M
 src/components/home/Stats.vue,6/d/6da75f1de8510aa71b0c8166cdbc101e64cfb8d9
 Q
 !src/assets/Al RAGHAD Logo - c.svg,1/a/1a738587289a52c3c942412a36be938c3d2ba9ab
-P
- src/components/Logoanimation.vue,d/a/da2444a2ed543fe3bb5677373af6eab8092a847c
 R
 "src/components/about/AboutView.vue,e/3/e302d0a1dd3320530f85ffb4324b2e92e7efd407
+P
+ public/linkedin-brands-solid.svg,1/0/10bc745475e864e6a11374fcdeeadb8f2d806ba6
+W
+'public/square-facebook-brands-solid.svg,9/f/9f45e6603da58374a2423c09e5ffa3bbb43d8840
+X
+(public/square-instagram-brands-solid.svg,4/9/495c8dfcede8a4cf8ab6d24c29d03d77e7fc869d
