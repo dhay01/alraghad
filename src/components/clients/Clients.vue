@@ -47,10 +47,9 @@ onMounted(() => {
             <img :src="client.logo" alt="Client Logo" class="object-contain w-full h-full" />
           </div>
 
-          <!-- Client Info -->
           <div class="text-black text-center md:text-left">
             <h2 class="text-xl md:text-2xl font-semibold">{{ client.name }}</h2>
-            <p class="mt-2 text-gray-700">{{ client.description }}</p>
+<!--            <p class="mt-2 text-gray-700">{{ client.description }}</p>-->
           </div>
         </div>
       </div>

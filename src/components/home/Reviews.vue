@@ -50,11 +50,6 @@ onMounted(fetchCertificates);
               class="w-32 h-32 object-cover mb-4"
           />
 
-          <!-- Small paragraph for the review -->
-          <p class="text-gray-600 text-center mb-4">
-            {{ certificate.review }}
-          </p>
-
           <!-- Button that navigates to the certificate page -->
           <button
               @click="navigateToCertificate(certificate.id)"
