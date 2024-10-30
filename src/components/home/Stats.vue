@@ -78,10 +78,7 @@ onBeforeUnmount(() => {
         <div class="text-hover-child counter">{{ obj3 }}</div>
         <div class=" text-lg sm:text-xl md:text-xl text-black">Different types of spaces</div>
       </div>
-<!--       <div class="counter-container text-hover cursor-pointer w-36 text-left">-->
-<!--        <div class="text-hover-child counter">{{ obj4 }}</div>-->
-<!--        <div class="text-lg sm:text-xl md:text-xl text-black">Brands</div>-->
-<!--      </div>-->
+
        <div class="counter-container text-hover cursor-pointer w-36 text-left">
         <div class="text-hover-child counter">+{{ obj5 }}</div>
         <div class=" text-lg sm:text-xl md:text-xl text-black">Number of employees</div>
