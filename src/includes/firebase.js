@@ -1,9 +1,9 @@
 import {initializeApp} from "firebase/app";
 import {getAnalytics} from "firebase/analytics";
 import {getFirestore, collection} from "firebase/firestore"; // Add this line
-import apiKey from '../../env.js';
+import apiKey from '../../.env';
 const firebaseConfig = {
-    apiKey: apiKey,
+    apiKey: process.env.VITE_API_KEY,
     authDomain: "alraghad-f1221.firebaseapp.com",
     projectId: "alraghad-f1221",
     storageBucket: "alraghad-f1221.appspot.com",
