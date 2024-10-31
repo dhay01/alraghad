@@ -10,7 +10,7 @@ const partners = ref([]);
 async function fetchLogos() {
   try {
     const querySnapshot = await getDocs(collection(db, 'partners'));
-    partners.value = querySnapshot.docs.map(doc => doc.data().logo); // Fetch 'logo' field correctly
+    partners.value = querySnapshot.docs.map(doc => doc.data().logo);
   } catch (error) {
     console.error("Error fetching logos: ", error);
   }

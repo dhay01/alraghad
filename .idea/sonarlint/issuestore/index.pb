@@ -99,3 +99,7 @@ X
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+S
+#src/components/home/ReviewsCard.vue,f/e/fe97e9bfb4869cf32fc3d2a90c8fe78ebcc8952e
+`
+0node_modules/@firebase/firestore/dist/index.d.ts,f/4/f419e9c89ed9558359f1149fc125a25f07813c7a
