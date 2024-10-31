@@ -30,14 +30,15 @@ function handleImageLoad() {
       <img
           v-show="!isLoading"
           @load="handleImageLoad"
-          class="rounded-3xl p-2 w-full h-80 object-cover"
+          @click="navigateToProject"
+          class="rounded-3xl cursor-pointer p-2 w-full h-80 object-cover"
           :src="project.photo || '/src/assets/DSC07785.jpg'"
           alt="header"
           @error="isLoading = false"
       />
     </figure>
     <div class="card-body text-black">
-      <h2 class="card-title">{{ project.title }}</h2>
+      <h2   @click="navigateToProject" class="cursor-pointer card-title">{{ project.title }}</h2>
       <div class="grid grid-cols-2 gap-4 md:gap-16">
         <div>
           <p class="text-sm">Location: </p>
