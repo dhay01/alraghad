@@ -1,7 +1,7 @@
 import {initializeApp} from "firebase/app";
 import {getAnalytics} from "firebase/analytics";
 import {getFirestore, collection} from "firebase/firestore"; // Add this line
-import apiKey from '../../.env';
+
 const firebaseConfig = {
     apiKey: process.env.VITE_API_KEY,
     authDomain: "alraghad-f1221.firebaseapp.com",
