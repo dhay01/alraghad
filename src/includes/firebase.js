@@ -3,7 +3,7 @@ import {getAnalytics} from "firebase/analytics";
 import {getFirestore, collection} from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_API_KEY,
+    apiKey: "AIzaSyCo_HEDejl9A6DNjy3vPmo-TcixvnOaK1s",
     authDomain: "alraghad-f1221.firebaseapp.com",
     projectId: "alraghad-f1221",
     storageBucket: "alraghad-f1221.appspot.com",
