@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 import projectCard from './ProjectCard.vue';
-import { db } from '../../includes/firebase.js';
-import { collection, getDocs } from 'firebase/firestore';
+import {db} from '../../includes/firebase.js';
+import {collection, getDocs} from 'firebase/firestore';
 
 const projects = ref([]);
 
@@ -14,7 +14,7 @@ async function fetchProjects() {
           id: doc.id,
           ...doc.data(),
         }))
-        .filter(project => project.featured === true); // Filter only featured projects
+        .filter(project => project.featured === true).sort((a, b) => a.no - b.no);
   } catch (error) {
     console.error("Error fetching projects: ", error);
   }
@@ -32,7 +32,7 @@ onMounted(fetchProjects);
           :key="project.id"
           class="carousel-item w-full md:w-auto"
       >
-        <projectCard :project="project" />
+        <projectCard :project="project"/>
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
-
 <script setup>
 import {ref, onMounted} from 'vue';
 import {collection, getDocs} from 'firebase/firestore';
 import {db} from '../../includes/firebase';
 import Spinner from "@/components/Spinner.vue";
 import ViewJob from "@/components/jobs/ViewJob.vue";
+import empty from "@/assets/empty.jpg";
 
 
 // Define reactive state for jobs and loading state
@@ -45,7 +45,7 @@ function openModal(job) {
 
     <!-- Loading Spinner -->
     <div v-if="isLoading" class="text-center md:px-[48%] px-[40%] py-[10%] md:py-[20%]">
-      <Spinner />
+      <Spinner/>
     </div>
     <div v-else>
       <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">why join us?</h1>
@@ -65,15 +65,21 @@ function openModal(job) {
       <h1 class="text-3xl font-bold py-6 text-black">open positions</h1>
       <div v-for="job in jobs" :key="job.id" class="mb-8">
         <h2 @click="openModal(job)" class="text-2xl underline cursor-pointer text-[#422A86] font-bold">
-          {{job.title }}
+          {{ job.title }}
         </h2>
         <p class="text-gray-700">{{ job.location }}</p>
       </div>
     </div>
+    <div v-if="!jobs.length">
+      <div class="text-center">
+        <img :src="empty" alt="No Projects" class="object-contain mx-auto w-72 h-72 md:w-96 md:h-96"/>
+        <p class="text-xl text-gray-400">No open positions found</p>
+      </div>
+    </div>
 
-    <!-- Include the Job Modal component and pass the selected job as prop -->
     <ViewJob :item="selectedJob"/>
   </div>
+
 </template>
 
 <style scoped>

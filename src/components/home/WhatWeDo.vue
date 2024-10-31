@@ -9,7 +9,7 @@ const data = ref([]);
 async function fetchData() {
   try {
     const querySnapshot = await getDocs(collection(db, "offers"));
-    data.value = querySnapshot.docs.map(doc => doc.data()).sort((a, b) => a.no - b.no); // Sort by 'no' field in ascending order
+    data.value = querySnapshot.docs.map(doc => doc.data()).sort((a, b) => a.no - b.no);
 
   } catch (error) {
     console.error("Error fetching data: ", error);
