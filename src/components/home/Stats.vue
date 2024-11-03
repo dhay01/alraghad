@@ -65,23 +65,23 @@ onBeforeUnmount(() => {
       At Al-Raghad Group, our commitment to excellence, unparalleled expertise, and unwavering dedication set us apart. Here's what we offer:
     </h1>
 
-    <div class="flex  flex-wrap w-[95%] ml-auto mr-auto justify-between gap-2 py-20">
+    <div class="flex  flex-wrap w-[95%] ml-auto mr-auto justify-between  py-20">
       <div class="counter-container text-hover cursor-pointer w-36 text-left">
-        <div class=" text-hover-child counter">+{{ obj1 }}</div>
-        <div class=" text-lg sm:text-xl md:text-xl text-black">Projects Delivered</div>
+        <div class="  text-hover-child  counter"> over {{ obj1 }}</div>
+        <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Completed Projects</div>
       </div>
         <div class="counter-container text-hover cursor-pointer w-36 text-left">
         <div class="text-hover-child counter">{{ obj2 }}</div>
-        <div class=" text-lg sm:text-xl md:text-xl text-black">Ongoing Projects</div>
+        <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Ongoing Projects</div>
       </div>
         <div class="counter-container text-hover cursor-pointer w-36 text-left">
         <div class="text-hover-child counter">{{ obj3 }}</div>
-        <div class=" text-lg sm:text-xl md:text-xl text-black">Different types of spaces</div>
+        <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Different types of spaces</div>
       </div>
 
        <div class="counter-container text-hover cursor-pointer w-36 text-left">
-        <div class="text-hover-child counter">+{{ obj5 }}</div>
-        <div class=" text-lg sm:text-xl md:text-xl text-black">Number of employees</div>
+        <div class="text-hover-child counter">over {{ obj5 }}</div>
+      <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Qualified engineers</div>
       </div>
     </div>
   </div>
@@ -91,17 +91,17 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .counter {
-  font-size: 30px;
-  color: black;
+  font-size: 25px;
+
 }
 @media (min-width: 640px) {
   .counter {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 @media (min-width: 1024px) {
   .counter {
-    font-size: 40px;
+    font-size: 35px;
   }
 }
 .text-hover .text-hover-child:hover{

@@ -23,8 +23,7 @@ import {RouterLink} from "vue-router";
         </h1></RouterLink>
 
         <p class="text-black w-full md:w-[450px] py-4 text-base md:text-xl">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis
+          With a legacy dating back to 1983, we’ve expanded from Baghdad to serve all of Iraq, specializing in HVAC, MEP, firefighting, and power systems. Our commitment to quality and customer-centric service has earned us the status of a premier contractor.
         </p>
       </div>
     </div>

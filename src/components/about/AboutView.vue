@@ -311,8 +311,10 @@ function toggleSection(section) {
         <div class="timeline-end mb-10">
 
           <div class="text-lg font-black">2024</div>
-          Acquired the franchise for Patchi and established the supply and installation of Patchi’s MEP supply and
+          • Acquired the franchise for Patchi and established the supply and installation of Patchi’s MEP supply and
           installation
+          <br/>
+          • collaborating with AFM switzerland Group
         </div>
 
       </li>
