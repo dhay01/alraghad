@@ -1,7 +1,7 @@
 <script setup>
-import {ref} from 'vue';
-import {defineProps} from 'vue';
-import {useRouter} from 'vue-router';
+import { ref } from 'vue';
+import { defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   project: {
@@ -14,15 +14,16 @@ const router = useRouter();
 const isLoading = ref(true);
 
 function navigateToProject() {
-  router.push({name: 'project-details', params: {id: props.project.id}});
+  router.push({ name: 'project-details', params: { id: props.project.id } });
 }
 
 function handleImageLoad() {
   isLoading.value = false;
 }
 </script>
+
 <template>
-  <div class="card w-full md:w-80">
+  <div class="card w-full md:w-96">
     <figure class="relative">
       <!-- Show skeleton only if isLoading is true -->
       <div v-if="isLoading" class="skeleton w-full h-80 rounded-3xl p-2"></div>
@@ -37,9 +38,9 @@ function handleImageLoad() {
           @error="isLoading = false"
       />
     </figure>
-    <div class="card-body text-black">
-      <h2   @click="navigateToProject" class="cursor-pointer card-title">{{ project.title }}</h2>
-      <div class="grid grid-cols-2 gap-4 md:gap-16">
+    <div class="card-body w-[100%] text-black">
+      <h2 @click="navigateToProject" class="cursor-pointer card-title">{{ project.title }}</h2>
+      <div class="grid grid-cols-2  gap-4 md:gap-16">
         <div>
           <p class="text-sm">Location: </p>
           <p class="text-sm">Client: </p>
@@ -84,7 +85,6 @@ function handleImageLoad() {
   animation: pulse 1.5s infinite;
 }
 
-
 .skeleton {
   height: 20rem;
 }
@@ -99,6 +99,10 @@ function handleImageLoad() {
   100% {
     opacity: 1;
   }
+}
+
+.btn {
+  width: 100%;
 }
 
 .btn:hover .svg path {

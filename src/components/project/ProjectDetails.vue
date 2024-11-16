@@ -14,7 +14,7 @@ const props = defineProps({
 });
 
 const project = ref(null);
-const isLoading = ref(true); // Add loading state
+const isLoading = ref(true);
 
 async function fetchProject() {
   try {
@@ -29,10 +29,16 @@ async function fetchProject() {
   } catch (error) {
     console.error("Error fetching project: ", error);
   } finally {
-    isLoading.value = false; // Set loading to false after fetch
+    isLoading.value = false;
   }
 }
 const hasVirtualTour = computed(() => project.value && project.value.virtualTour);
+const descriptionParagraphs = computed(() => {
+  if (project.value && project.value.description) {
+    return project.value.description.split('-').map(paragraph => paragraph.trim());
+  }
+  return [];
+});
 
 
 onMounted(() => {
@@ -94,8 +100,11 @@ onMounted(() => {
 
       <!-- Project description -->
       <div class="mt-8">
-        <p class="text-lg leading-relaxed text-justify px-2 md:px-5 text-gray-700">{{ project.description }}</p>
+        <div v-for="(paragraph, index) in descriptionParagraphs" :key="index">
+          <p class="text-lg leading-relaxed max-w-[1150px] ml-auto mr-auto text-justify px-2 md:px-5 text-gray-700">{{ paragraph }}</p>
+        </div>
       </div>
+
 
       <!-- Photo Library -->
 

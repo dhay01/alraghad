@@ -45,14 +45,17 @@ onMounted(() => {
     >
       <div class="carousel-track">
         <!-- Loop through the fetched logos and display them -->
-        <div v-for="(logo, index) in partners" :key="'first-' + index" class="carousel__item">
+        <div v-for="(logo, index) in partners" :key="'first-' + index" class="carousel__item ">
           <img :src="logo" alt="Logo" />
+
         </div>
         <div v-for="(logo, index) in partners" :key="'second-' + index" class="carousel__item">
           <img :src="logo" alt="Logo" />
+
         </div>
         <div v-for="(logo, index) in partners" :key="'third-' + index" class="carousel__item">
           <img :src="logo" alt="Logo" />
+
         </div>
       </div>
     </div>
