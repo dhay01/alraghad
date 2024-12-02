@@ -9,7 +9,7 @@ const isImageLoaded = ref(false);
 // Fetch data from the "hero" collection in Firestore with a filter for page="about"
 async function fetchHero() {
   try {
-    const q = query(collection(db, "hero"), where("page", "==", "about"));
+    const q = query(collection(db, "hero"), where("page", "==", "projects"));
     const querySnapshot = await getDocs(q);
 
     // If there's a matching document, set hero to its data
