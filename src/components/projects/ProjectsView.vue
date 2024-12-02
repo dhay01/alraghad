@@ -5,6 +5,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../includes/firebase';
 import Spinner from "@/components/Spinner.vue";
 import empty from "@/assets/empty.png";
+import Hero from "@/components/projects/Hero.vue"
 
 const categories = ['MEP', 'Civil',  'Investment'];
 const selectedCategory = ref(categories[0]);
@@ -43,6 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <Hero/>
   <div class="container min-h-screen mx-auto px-5 sm:px-10 py-20">
     <!-- Loading Spinner -->
     <div v-if="isLoading" class="text-center md:px-[48%] px-[40%] py-[10%] md:py-[20%]">

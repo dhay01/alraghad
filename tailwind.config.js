@@ -17,6 +17,7 @@ export default {
             {
                 mytheme: {
                     "primaryBlue": "#422A86",
+                    "primaryRed": "#E62D18",
                 },
             }
 

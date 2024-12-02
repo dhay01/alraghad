@@ -4,9 +4,12 @@ import ProjectDetails from '@/components/project/ProjectDetails.vue'
 import Jobs from '@/components/jobs/Jobs.vue'
 import Clients from '@/components/clients/Clients.vue'
 import WhatWeOffer from "@/components/whatweoffer/WhatWeOffer.vue";
-import AboutView from "@/components/about/AboutView.vue";
+import AboutView from "../views/AboutView.vue";
 import ProjectsView from "@/components/projects/ProjectsView.vue";
 import Certificate from "@/components/certificates/Certificate.vue";
+import RelatedProjects from "@/components/project/RelatedProjectsCard.vue";
+import PastProjectsView from "@/views/PastProjectsView.vue";
+import RelatedProjectView from "@/components/project/RelatedProjectView.vue";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -19,6 +22,12 @@ const router = createRouter({
             path: '/project/:id',
             name: 'project-details',
             component: ProjectDetails,
+            props: true
+        },
+        {
+            path: '/related-project/:id',
+            name: 'related-project',
+            component: RelatedProjectView,
             props: true
         },
         {
@@ -50,6 +59,11 @@ const router = createRouter({
             path: '/certificate/:id',
             name: 'certificate',
             component: Certificate
+        },
+        {
+            path: '/all-projects',
+            name: 'all projects',
+            component: PastProjectsView
         }
     ]
 })

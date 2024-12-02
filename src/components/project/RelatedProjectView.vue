@@ -1,87 +1,46 @@
+
 <script setup>
-import {ref, onMounted, computed} from 'vue';
-import {defineProps} from 'vue';
-import {db} from '../../includes/firebase';
-import {collection, getDocs, query, where, doc, getDoc} from 'firebase/firestore';
+import { ref, onMounted, computed } from 'vue';
+import { useRoute } from 'vue-router';
+import { db } from '../../includes/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import PhotoLibrary from '../project/PhotoLibrary.vue';
 import Spinner from '../Spinner.vue';
-import RelatedProjectsCard from "./RelatedProjectsCard.vue";
 
-const props = defineProps({
-  id: {
-    type: String,
-    required: true,
-  },
-});
-
+const route = useRoute();
+const projectId = route.params.id;
+console.log("text");
 const project = ref(null);
-const relatedProjects = ref([]);
 const isLoading = ref(true);
 
-// Compute description paragraphs
-const descriptionParagraphs = computed(() => {
-  return project.value?.description
-      ? project.value.description.split('\n') // Split by newline
-      : [];
-});
 
-// Fetch the main project document
 async function fetchProject() {
   try {
-    const docRef = doc(db, 'projects', props.id);
+    const docRef = doc(db, 'relatedProjects', projectId);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      project.value = {id: docSnap.id, ...docSnap.data()};
-      console.log('Fetched project:', project.value); // Debug log
+      project.value = { id: docSnap.id, ...docSnap.data() };
     } else {
       console.error('No such document!');
     }
   } catch (error) {
     console.error('Error fetching project: ', error);
+  } finally {
+    isLoading.value = false;
   }
 }
+const descriptionParagraphs = computed(() => {
+  return project.value?.description
+      ? project.value.description.split(' - ') // Split on " - "
+      : [];
+});
 
-// Fetch related projects from relatedProjects collection
-async function fetchRelatedProjects() {
-  try {
-    if (!project.value?.title) {
-      relatedProjects.value = [];
-      return;
-    }
-
-    const relatedProjectsQuery = query(
-        collection(db, 'relatedProjects'),
-        where('project', '==', project.value.title)
-    );
-
-    const querySnapshot = await getDocs(relatedProjectsQuery);
-
-    relatedProjects.value = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    console.log('Filtered related projects:', relatedProjects.value);
-  } catch (error) {
-    console.error('Error fetching related projects: ', error);
-  }
-}
 
 onMounted(async () => {
+  console.log("project id", projectId);
   window.scrollTo(0, 0);
-  try {
-    await fetchProject();
-    if (project.value) {
-      await fetchRelatedProjects();
-    }
-  } catch (error) {
-    console.error('Error initializing project details: ', error);
-  } finally {
-    isLoading.value = false; // Ensure loading state is updated
-  }
-  console.log('Parent relatedProjects:', relatedProjects.value);
-
+  await fetchProject();
 });
 </script>
 
@@ -90,12 +49,14 @@ onMounted(async () => {
   <div class="container min-h-screen mx-auto px-4 py-20">
     <!-- Loading Spinner -->
     <div v-if="isLoading" class="flex justify-center items-center h-screen">
-      <Spinner/>
+      <Spinner />
     </div>
 
-    <div v-else>
+    <div v-else-if="project">
       <!-- Main Project Details -->
-      <h1 class="text-4xl md:text-5xl font-bold py-6 text-black">{{ project.title }}</h1>
+      <h1 class="text-4xl md:text-5xl font-bold py-6 text-black">
+        {{ project.title || 'Untitled Project' }}
+      </h1>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Location Card -->
@@ -141,18 +102,14 @@ onMounted(async () => {
       <!-- Project Description -->
       <div class="mt-8">
         <div v-for="(paragraph, index) in descriptionParagraphs" :key="index">
-          <p class="text-lg leading-relaxed max-w-[1150px] ml-auto mr-auto text-justify px-2 md:px-5 text-gray-700">
+          <p class="text-lg leading-relaxed max-w-[1150px] mx-auto text-justify px-2 md:px-5 text-gray-700">
             {{ paragraph }}
           </p>
         </div>
       </div>
 
-
-
-      <PhotoLibrary :images="project.photos"/>
-
       <!-- Photo Library -->
-
+      <PhotoLibrary :images="project.photos || []" />
 
       <!-- Virtual Tour -->
       <div v-if="project.virtualTour" class="w-full my-8 flex justify-center">
@@ -168,14 +125,11 @@ onMounted(async () => {
           ></iframe>
         </div>
       </div>
-      <div v-if="relatedProjects.length > 0">
-        <RelatedProjectsCard
+    </div>
 
-            :relatedProjects="relatedProjects"
-        />
-      </div>
-
-
+    <!-- Error message -->
+    <div v-else>
+      <p class="text-center text-gray-700">Project not found.</p>
     </div>
   </div>
 </template>

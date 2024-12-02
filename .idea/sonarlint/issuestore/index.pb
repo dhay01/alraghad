@@ -88,8 +88,6 @@ M
 src/components/home/Stats.vue,6/d/6da75f1de8510aa71b0c8166cdbc101e64cfb8d9
 Q
 !src/assets/Al RAGHAD Logo - c.svg,1/a/1a738587289a52c3c942412a36be938c3d2ba9ab
-R
-"src/components/about/AboutView.vue,e/3/e302d0a1dd3320530f85ffb4324b2e92e7efd407
 P
  public/linkedin-brands-solid.svg,1/0/10bc745475e864e6a11374fcdeeadb8f2d806ba6
 W
@@ -103,10 +101,6 @@ S
 #src/components/home/ReviewsCard.vue,f/e/fe97e9bfb4869cf32fc3d2a90c8fe78ebcc8952e
 `
 0node_modules/@firebase/firestore/dist/index.d.ts,f/4/f419e9c89ed9558359f1149fc125a25f07813c7a
-3
-env,9/2/920f8f5815b381ea692e9e7c2f7119f2b1aa620a
-6
-env.js,3/c/3c48ddb3f78055fb230ec6da6babc91f114e92b8
 4
 .env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 U
@@ -115,3 +109,25 @@ T
 $src/hooks/useIntersectionObserver.js,5/5/55e197ce97e8bab269490c15c2a4b88fbd9208cb
 J
 src/directives/lazyLoad.js,7/1/71a532e6e02c96cfb5212c388e4daa82329eca17
+]
+-src/components/project/RelatedProjectView.vue,2/3/2356ee4b4dec93bfa19957b3dd12ac8db9e21a98
+^
+.src/components/project/RelatedProjectsCard.vue,e/8/e80706d21b795842175cadfe5bcf4cd9cdf07aed
+M
+src/components/about/Hero.vue,9/b/9b2d87c38defe5d11b607852db033e4bd0de6937
+G
+src/views/AboutView.vue,2/6/26ef00bb12476a7d10f82db100a9d92a643de871
+Q
+!src/components/about/Timeline.vue,2/1/21caa86f3f147f2eae4ee5c94d7c75cb8d81e1ea
+N
+src/components/about/About.vue,5/b/5b715216b3df14ff1899fcdc75221723db586cea
+T
+$src/components/about/ScopeOfWork.vue,1/5/159b099ee4e78072b1c0719f203bccf675e48f50
+M
+src/components/about/Text.vue,9/4/9459ad0a86d5b265ae62c93e7a18bcf2a1dd54a4
+P
+ src/components/projects/Hero.vue,f/f/ffb09f0d2149a304a380f976f0ab78de73d589d1
+O
+src/components/PasrProjects.vue,5/4/54aefc763ebe0b9d7be58823aa20fe20d2626431
+N
+src/views/PastProjectsView.vue,8/1/81d2eda1aee9c43bcdf41bcdab211681b5ea3414

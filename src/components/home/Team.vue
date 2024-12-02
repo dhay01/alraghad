@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <h1 class="text-left text-3xl md:text-5xl py-10 text-black">Meet Our Team</h1>
       <div class="flex justify-center">
-        <Carousel class="w-full" :value="teamMembers" :numVisible="4" :numScroll="1" :responsiveOptions="responsiveOptions">
+        <Carousel class="w-full" :value="teamMembers" :numVisible="5" :numScroll="1" :responsiveOptions="responsiveOptions">
           <template #item="slotProps">
             <div class="team-member ml-4 relative">
               <div class="relative w-full h-full">
@@ -43,7 +43,7 @@ import Carousel from 'primevue/carousel';
 
 const teamMembers = ref([]);
 const responsiveOptions = ref([
-  { breakpoint: '1600px', numVisible: 4, numScroll: 1 },
+  { breakpoint: '1600px', numVisible: 5, numScroll: 1 },
   { breakpoint: '1400px', numVisible: 3, numScroll: 1 },
   { breakpoint: '1199px', numVisible: 2, numScroll: 1 },
   { breakpoint: '767px', numVisible: 1, numScroll: 1 }
