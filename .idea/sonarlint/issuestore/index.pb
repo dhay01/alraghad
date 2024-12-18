@@ -127,7 +127,5 @@ M
 src/components/about/Text.vue,9/4/9459ad0a86d5b265ae62c93e7a18bcf2a1dd54a4
 P
  src/components/projects/Hero.vue,f/f/ffb09f0d2149a304a380f976f0ab78de73d589d1
-O
-src/components/PasrProjects.vue,5/4/54aefc763ebe0b9d7be58823aa20fe20d2626431
 N
 src/views/PastProjectsView.vue,8/1/81d2eda1aee9c43bcdf41bcdab211681b5ea3414

@@ -67,21 +67,6 @@ onMounted(() => {
       </div>
 
       <!-- Filtered Projects Display -->
-<!--      <div class="space-y-6">-->
-<!--        <div v-for="project in filteredProjects" :key="project.id" class="flex flex-col md:flex-row items-start space-y-4 md:space-y-0 md:space-x-6 p-6 rounded-box bg-gray-50 transition-transform transform hover:scale-105">-->
-
-<!--          &lt;!&ndash; Project Info &ndash;&gt;-->
-<!--          <div class="text-black w-full md:w-2/3">-->
-<!--            <h2 class="text-xl md:text-2xl font-semibold">{{ project.title }} - {{ project.location }}</h2>-->
-<!--            <div class="mt-4">-->
-<!--              <button @click="navigateToProject(project.id)" class="btn hover:bg-[#E62D18] bg-white text-black border-black hover:text-white hover:border-none rounded-3xl">-->
-<!--                Read More-->
-<!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-      <!-- Filtered Projects Display -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div v-for="project in filteredProjects" :key="project.id" class="card w-full p-3 bg-gray-50 rounded-box transition-transform transform hover:scale-105">
           <figure class="relative">
@@ -164,5 +149,16 @@ onMounted(() => {
 
 .bg-primaryBlue {
   background-color: #422A86;
+}
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  min-height: 2.5rem; /* Adjust this to ensure titles align */
+  display: flex;
+  align-items: center; /* Centers the text vertically if shorter */
+}
+.card-actions {
+  margin-top: auto; /* Pushes actions to the bottom */
 }
 </style>
