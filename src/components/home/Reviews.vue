@@ -1,9 +1,13 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { db } from '@/includes/firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import Carousel from 'primevue/carousel';
 import reviewsCard from './ReviewsCard.vue';
+import { useI18n } from 'vue-i18n';
+
+
+
 
 const certificates = ref([]);
 const responsiveOptions = ref([
@@ -25,20 +29,23 @@ async function fetchCertificates() {
     console.error("Error fetching certificates: ", error);
   }
 }
-
+const { t, locale } = useI18n();
+const isRtl = computed(() => locale.value === 'ar');
 onMounted(async () => {
   await fetchCertificates();
 });
 </script>
 
 <template>
-  <div class="px-5 sm:px-10 md:px-20 py-10">
-    <h1 class="text-left text-3xl md:text-5xl py-10 text-black">What Our Clients Say About Us</h1>
+  <div class="px-5 sm:px-10 md:px-20 py-10" >
+    <div >
+<h1 :dir="isRtl ? 'rtl' : 'ltr'" class=" text-3xl md:text-5xl py-10 text-black">{{ t('reviewCertificatesCards.title') }}</h1>
+    
+    </div>
     <div class="flex justify-center">
-      <!-- Carousel container with full width for proper centering -->
-      <Carousel class="w-full" :value="certificates" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions">
+      <Carousel dir="ltr" class="w-full" :value="certificates" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions">
         <template #item="slotProps">
-          <div class="certificate-item ml-4 relative">
+          <div class="certificate-item mr-4 relative">
             <reviewsCard :certificate="slotProps.data" />
           </div>
         </template>
@@ -49,6 +56,6 @@ onMounted(async () => {
 
 <style scoped>
 .certificate-item {
-  margin-right: 1rem;
+  margin-left: 1rem;
 }
 </style>

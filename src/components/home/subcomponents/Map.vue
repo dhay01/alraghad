@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const isCardVisible = ref(false);
 const cardTitle = ref('');
@@ -8,7 +11,7 @@ const mouseX = ref(0);
 const mouseY = ref(0);
 
 const showCard = (title, number) => {
-  cardTitle.value = title;
+  cardTitle.value = t(`home.map.regions.${title}`);
   cardNumbers.value = number;
   isCardVisible.value = true;
 };

@@ -6,6 +6,9 @@ import { db } from '../../includes/firebase';
 import Spinner from "@/components/Spinner.vue";
 import empty from "@/assets/empty.png";
 import Hero from "@/components/projects/Hero.vue"
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const categories = ['MEP', 'Civil',  'Investment'];
 const selectedCategory = ref(categories[0]);
@@ -51,7 +54,7 @@ onMounted(() => {
       <Spinner />
     </div>
     <div v-else>
-      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">Discover More of AL-Raghad Projects</h1>
+      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">{{ t('home.projects.title') }}</h1>
 
       <!-- Categories Buttons -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 py-6">
@@ -84,9 +87,9 @@ onMounted(() => {
             <h2 class="card-title">{{ project.title }}</h2>
             <div class="grid grid-cols-2 gap-2 md:gap-8">
               <div>
-                <p class="text-sm">Location:</p>
-                <p class="text-sm">Client:</p>
-                <p class="text-sm">Starting Date:</p>
+                <p class="text-sm">{{ t('projectCard.location') }}:</p>
+                <p class="text-sm">{{ t('projectCard.client') }}:</p>
+                <p class="text-sm">{{ t('projectCard.startingDate') }}:</p>
               </div>
               <div>
                 <p class="text-sm">{{ project.location }}</p>
@@ -99,7 +102,7 @@ onMounted(() => {
                   @click="navigateToProject(project.id)"
                   class="btn w-full hover:bg-[#E62D18] bg-white text-black border-black hover:text-white hover:border-none rounded-3xl"
               >
-                Read More
+                {{ t('projectCard.readMore') }}
                 <svg
                     width="20"
                     height="30"
@@ -121,12 +124,10 @@ onMounted(() => {
         </div>
       </div>
 
-
-
       <div v-if="!filteredProjects.length">
         <div class="text-center">
           <img :src="empty" alt="No Projects" class="object-contain mx-auto w-72 h-72 md:w-96 md:h-96" />
-          <p class="text-xl text-gray-400">No projects found for "{{ selectedCategory }}"</p>
+          <p class="text-xl text-gray-400">{{ t('projects.noProjectsFound') }} "{{ selectedCategory }}"</p>
         </div>
       </div>
     </div>

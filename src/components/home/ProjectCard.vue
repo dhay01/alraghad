@@ -1,7 +1,10 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
+
+const { t, locale } = useI18n();
 
 const props = defineProps({
   project: {
@@ -20,6 +23,13 @@ function navigateToProject() {
 function handleImageLoad() {
   isLoading.value = false;
 }
+
+const projectTitle = computed(() => {
+  if (locale.value === 'ar' && props.project.title_ar) {
+    return props.project.title_ar;
+  }
+  return props.project.title_en || props.project.title || '';
+});
 </script>
 
 <template>
@@ -39,12 +49,12 @@ function handleImageLoad() {
       />
     </figure>
     <div class="card-body w-[100%] text-black">
-      <h2 @click="navigateToProject" class="cursor-pointer card-title">{{ project.title }}</h2>
+      <h2 @click="navigateToProject" :dir="locale.value === 'ar' ? 'rtl' : 'ltr'" class="cursor-pointer card-title">{{ projectTitle }}</h2>
       <div class="grid grid-cols-2  gap-4 md:gap-16">
         <div>
-          <p class="text-sm">Location: </p>
-          <p class="text-sm">Client: </p>
-          <p class="text-sm">Starting Date: </p>
+          <p class="text-sm">{{ t('projectCard.location') }}: </p>
+          <p class="text-sm">{{ t('projectCard.client') }}: </p>
+          <p class="text-sm">{{ t('projectCard.startingDate') }}: </p>
         </div>
         <div>
           <p class="text-sm">{{ project.location }}</p>
@@ -57,7 +67,7 @@ function handleImageLoad() {
             @click="navigateToProject"
             class="btn w-full hover:bg-[#E62D18] bg-white text-black border-black hover:text-white hover:border-none rounded-3xl"
         >
-          Read More
+          {{ t('projectCard.readMore') }}
           <svg
               width="20"
               height="30"

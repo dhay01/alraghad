@@ -1,10 +1,13 @@
 <script setup>
 import { db } from '../../includes/firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { RouterLink } from "vue-router";
 
 const data = ref([]);
+const { locale } = useI18n();
+const isRtl = computed(() => locale.value === 'ar');
 
 async function fetchData() {
   try {
@@ -20,15 +23,17 @@ onMounted(fetchData);
 
 <template>
   <div class="px-5 sm:px-10 md:px-20 py-10">
-    <h1 class="text-left text-3xl md:text-5xl py-10 text-black">What We Do</h1>
+    <h1 :class="[isRtl ? 'text-right' : 'text-left', 'text-3xl md:text-5xl py-10 text-black']">
+      {{ isRtl ? ' خدماتنا' : 'What We Do' }}
+    </h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <div
           v-for="item in data"
-          :key="item.title"
+          :key="item.title_en + item.title_ar"
           class="card w-full h-full min-h-[250px] lg:min-h-[200px] transition-transform transform hover:scale-105 hover:shadow-lg"
           :style="`background-color:${item.bg}`"
       >
-        <div class="card-body flex flex-col justify-between p-4">
+        <div class="card-body flex flex-col justify-between p-4" :dir="isRtl ? 'rtl' : 'ltr'">
           <RouterLink to="/what-we-offer">
             <img
                 :src="item.icon"
@@ -37,8 +42,12 @@ onMounted(fetchData);
                 class="mb-4 transition-transform transform hover:rotate-6"
             />
             <div class="text-black">
-              <h1 class="text-lg py-2">{{ item.title }}</h1>
-              <p class="text-sm">{{ item.description }}</p>
+              <h1 :class="[isRtl ? 'text-right' : 'text-left', 'text-lg py-2']">
+                {{ isRtl ? item.title_ar : item.title_en }}
+              </h1>
+              <p :class="[isRtl ? 'text-right' : 'text-left', 'text-sm']">
+                {{ isRtl ? item.description_ar : item.description_en }}
+              </p>
             </div>
           </RouterLink>
         </div>

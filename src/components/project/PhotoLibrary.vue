@@ -2,13 +2,14 @@
 <template>
   <div class="px-10 py-10 flex justify-center items-center">
     <!-- PrimeVue Galleria Gallery -->
-    <Galleria
+    <Galleria 
         ref="galleria"
         :value="props.images"
         v-model:activeIndex="selectedIndex"
         :numVisible="5"
         :responsiveOptions="responsiveOptions"
         containerStyle="max-width: 100%; width: 100%;"
+        dir="ltr"
     >
       <template #item="slotProps">
         <div class="relative">
@@ -128,19 +129,97 @@ button i.pi {
   max-width: 100%;
 }
 
-.max-h-[90vh] {
+.max-h-90vh {
   max-height: 90vh;
 }
 
 .object-contain {
-  object-fit: contain;  /* Keep the full image viewable without cropping */
+  object-fit: contain;  
 }
 
 /* Additional custom styles */
 .p-galleria .p-galleria-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* This ensures that the gallery images maintain the aspect ratio without distortion */
+  object-fit: cover;  
+}
+/* Ensure the overall direction of the Galleria element itself is LTR */
+/* This might be redundant if the prop is working, but harmless to include */
+.p-galleria {
+    direction: ltr !important;
+}
+
+/* Target the main image navigation buttons */
+.p-galleria .p-galleria-next,
+.p-galleria .p-galleria-prev {
+    /* Ensure no flex-direction reversal or positioning issues */
+    right: 0px !important; /* Adjust if PrimeVue uses non-zero values by default */
+    left: 0px !important; /* Adjust if PrimeVue uses non-zero values by default */
+    transform: none !important; /* Remove any transform that might be flipping the button itself */
+}
+
+/* Target the icons within the main image navigation buttons */
+/* The icons are usually 'pi pi-chevron-left' and 'pi pi-chevron-right' */
+.p-galleria .p-galleria-next .pi,
+.p-galleria .p-galleria-prev .pi {
+    transform: scaleX(1) !important; /* Reset any horizontal flip */
+    /* If the arrow is actually an SVG or background-image, you might need different rules */
+}
+
+/* Target the thumbnail navigation buttons */
+.p-galleria .p-galleria-thumbnail-nav-button {
+    /* Make sure their container is LTR if needed */
+    direction: ltr !important;
+    /* Reset any positioning that might be reversed in RTL */
+    /* Check dev tools for exact default positioning values */
+    right: 0px !important;
+    left: 0px !important;
+    transform: none !important; /* Remove any transform that might be flipping the button itself */
+}
+
+/* Target the icons within the thumbnail navigation buttons */
+.p-galleria .p-galleria-thumbnail-nav-button .pi {
+    transform: scaleX(1) !important; /* Reset any horizontal flip */
+}
+
+/* More general rule for any .pi (PrimeIcons) within an RTL context that should be LTR */
+/* This is a broader stroke if the above specific rules don't catch all instances */
+[dir="rtl"] .pi {
+    transform: scaleX(1) !important;
+}
+
+/* If the problem is specifically the prev/next icon themselves. */
+/* PrimeIcons for left and right are typically 'pi-chevron-left' and 'pi-chevron-right' */
+.pi-chevron-left {
+    transform: scaleX(1) !important; /* Ensure it's left-pointing */
+}
+
+.pi-chevron-right {
+    transform: scaleX(1) !important; /* Ensure it's right-pointing */
+}
+
+/* Finally, if PrimeVue adds an RTL class to the component, target that specifically */
+.p-galleria.p-component.p-galleria-rtl .p-galleria-next .pi,
+.p-galleria.p-component.p-galleria-rtl .p-galleria-prev .pi,
+.p-galleria.p-component.p-galleria-rtl .p-galleria-thumbnail-next .pi,
+.p-galleria.p-component.p-galleria-rtl .p-galleria-thumbnail-prev .pi {
+    transform: scaleX(1) !important;
+}
+
+.p-galleria.p-component.p-galleria-rtl .p-galleria-thumbnail-nav-button {
+    left: auto !important; /* This might be key for thumbnail buttons */
+    right: 0px !important; /* This might be key for thumbnail buttons */
+}
+
+/* And for the next button's positioning in RTL if it's swapping sides */
+.p-galleria.p-component.p-galleria-rtl .p-galleria-thumbnail-next {
+    right: 0 !important; /* Or whatever its original LTR right position was */
+    left: auto !important;
+}
+
+.p-galleria.p-component.p-galleria-rtl .p-galleria-thumbnail-prev {
+    left: 0 !important; /* Or whatever its original LTR left position was */
+    right: auto !important;
 }
 </style>
 

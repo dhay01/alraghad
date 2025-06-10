@@ -1,45 +1,9 @@
-<template>
-  <div class="px-4 md:px-20 py-10">
-    <div class="container mx-auto">
-      <h1 class="text-left text-3xl md:text-5xl py-10 text-black">Meet Our Team</h1>
-      <div class="flex justify-center">
-        <Carousel class="w-full" :value="teamMembers" :numVisible="5" :numScroll="1" :responsiveOptions="responsiveOptions">
-          <template #item="slotProps">
-            <div class="team-member ml-4 relative">
-              <div class="relative w-full h-full">
-                <!-- Skeleton loader -->
-                <div v-if="slotProps.data.isLoading" class="skeleton w-full h-full rounded-lg"></div>
-
-                <!-- Lazy-loaded image with skeleton placeholder -->
-                <img
-                    v-show="!slotProps.data.isLoading"
-                    :src="slotProps.data.photo || '/src/assets/placeholder.jpg'"
-                    @load="handleImageLoad(slotProps.data)"
-                    :alt="slotProps.data.name"
-                    class="w-full h-full object-cover rounded-lg"
-                />
-              </div>
-
-              <!-- Overlay with name and position -->
-              <div class="overlay absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-end text-white p-4 opacity-0 hover:opacity-100 transition-opacity rounded-lg">
-                <div class="text-container">
-                  <h1 :class="nameClass(slotProps.data.name)" class="font-medium">{{ slotProps.data.name }}</h1>
-                  <p :class="positionClass(slotProps.data.position)" class="text-sm">{{ slotProps.data.position }}</p>
-                </div>
-              </div>
-            </div>
-          </template>
-        </Carousel>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { db } from '../../includes/firebase.js';
 import { collection, getDocs } from 'firebase/firestore';
 import Carousel from 'primevue/carousel';
+import { useI18n } from 'vue-i18n';
 
 const teamMembers = ref([]);
 const responsiveOptions = ref([
@@ -81,7 +45,56 @@ function positionClass(position) {
 }
 
 onMounted(fetchTeam);
+
+const { t, locale } = useI18n();
+const isRtl = computed(() => locale.value === 'ar');
 </script>
+<template>
+  <div class="px-4 md:px-20 py-10" :dir="isRtl ? 'rtl' : 'ltr'">
+    <div class="container mx-auto">
+      <h1 :class="[isRtl ? 'text-right' : 'text-left', 'text-3xl md:text-5xl py-10 text-black']">{{ t('home.team.title') }}</h1>
+      <div class="flex justify-center">
+        <Carousel  dir="ltr"
+          class="w-full"
+          :value="teamMembers" 
+          :numVisible="5" 
+          :numScroll="1" 
+          :responsiveOptions="responsiveOptions"
+          
+          
+        >
+          <template #item="slotProps">
+            <div class="team-member mr-4 relative">
+              <div class="relative w-full h-full">
+                <!-- Skeleton loader -->
+                <div v-if="slotProps.data.isLoading" class="skeleton w-full h-full rounded-lg"></div>
+
+                <!-- Lazy-loaded image with skeleton placeholder -->
+                <img
+                    v-show="!slotProps.data.isLoading"
+                    :src="slotProps.data.photo || '/src/assets/placeholder.jpg'"
+                    @load="handleImageLoad(slotProps.data)"
+                    :alt="slotProps.data.name"
+                    class="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+
+              <!-- Overlay with name and position -->
+              <div class="overlay absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-end text-white p-4 opacity-0 hover:opacity-100 transition-opacity rounded-lg">
+                <div class="text-container">
+                  <h1 :class="[nameClass(slotProps.data.name), isRtl ? 'text-right' : 'text-left', 'font-medium']">{{ slotProps.data.name }}</h1>
+                  <p :class="[positionClass(slotProps.data.position), isRtl ? 'text-right' : 'text-left']">{{ slotProps.data.position }}</p>
+                </div>
+              </div>
+            </div>
+          </template>
+        </Carousel>
+      </div>
+    </div>
+  </div>
+</template>
+
+
 
 <style scoped>
 .skeleton {

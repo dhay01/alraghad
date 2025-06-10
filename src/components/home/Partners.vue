@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../includes/firebase';
+import { useI18n } from 'vue-i18n';
 
 // Store the logos array
 const partners = ref([]);
@@ -32,11 +33,16 @@ const resumeScroll = () => {
 onMounted(() => {
   fetchLogos();
 });
+
+const { t, locale } = useI18n();
+const isRtl = computed(() => locale.value === 'ar');
 </script>
 
 <template>
   <div class="px-5 md:px-20 py-10">
-    <h1 class="text-left text-3xl md:text-5xl py-10 text-black">Our Partners</h1>
+    <h1 :class="[isRtl ? 'text-right' : 'text-left', 'text-3xl md:text-5xl py-10 text-black']">
+      {{ t('home.partners.title') }}
+    </h1>
 
     <div
         class="carousel-container"

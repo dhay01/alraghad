@@ -5,7 +5,9 @@ import {db} from '../../includes/firebase';
 import Spinner from "@/components/Spinner.vue";
 import ViewJob from "@/components/jobs/ViewJob.vue";
 import empty from "@/assets/empty.jpg";
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 
 // Define reactive state for jobs and loading state
 const jobs = ref([]);
@@ -48,21 +50,15 @@ function openModal(job) {
       <Spinner/>
     </div>
     <div v-else>
-      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">why join us?</h1>
+      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">{{ t('jobs.title') }}</h1>
       <div class="mt-2 mb-4">
         <p class="md:text-lg text-md leading-relaxed text-justify  text-gray-700">
-          Al-Raghad International Group specializes in comprehensive electrical and mechanical services at Al Baraka
-          Mall
-          (MEP), encompassing: - HVAC (Heating, Ventilation, and Air Conditioning) - Fire Fighting System - Domestic
-          Water System - Design and implementation of all electrical boards (LV Panel Boards, Motor Control Center) -
-          Internal & External Lighting - Network-Telephone-Television System - Fire Alarm and Detection System -
-          Building
-          Automation System.
+          {{ t('jobs.description') }}
         </p>
 
       </div>
 
-      <h1 class="text-3xl font-bold py-6 text-black">open positions</h1>
+      <h1 class="text-3xl font-bold py-6 text-black">{{ t('jobs.openPositions') }}</h1>
       <div v-for="job in jobs" :key="job.id" class="mb-8">
         <h2 @click="openModal(job)" class="text-2xl underline cursor-pointer text-[#422A86] font-bold">
           {{ job.title }}
@@ -73,7 +69,7 @@ function openModal(job) {
     <div v-if="!jobs.length">
       <div class="text-center">
         <img :src="empty" alt="No Projects" class="object-contain mx-auto w-72 h-72 md:w-96 md:h-96"/>
-        <p class="text-xl text-gray-400">No open positions found</p>
+        <p class="text-xl text-gray-400">{{ t('jobs.noPositions') }}</p>
       </div>
     </div>
 

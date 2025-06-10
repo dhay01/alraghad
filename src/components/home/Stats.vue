@@ -1,6 +1,6 @@
-
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 // Number animation function
 function animateValue(obj, start, end, duration) {
@@ -28,13 +28,13 @@ let observer = null;
 function handleIntersection(entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      // Animate numbers when the section comes into view
-      animateValue(obj1, 0, 100, 5000);  // Completed projects
-      animateValue(obj2, 0, 50, 5000);  // Ongoing projects
-      animateValue(obj3, 0, 10, 5000); // Satisfied clients
-      animateValue(obj4, 0, 100, 5000);  // Qualified engineers
-      animateValue(obj5, 0, 50, 5000);  // Qualified engineers
-      observer.disconnect();  // Stop observing once the animation is triggered
+
+      animateValue(obj1, 0, 100, 5000);  
+      animateValue(obj2, 0, 50, 5000);  
+      animateValue(obj3, 0, 10, 5000); 
+      animateValue(obj4, 0, 100, 5000);  
+      animateValue(obj5, 0, 50, 5000);  
+      observer.disconnect();  
     }
   });
 }
@@ -56,38 +56,40 @@ onBeforeUnmount(() => {
     observer.disconnect();
   }
 });
+
+const { t, locale } = useI18n();
+const isRtl = computed(() => locale.value === 'ar');
 </script>
 
 <template>
-  <div class="px-4 sm:px-8   md:px-20 py-8 counter-section">
-    <h1 class="text-left text-3xl sm:text-4xl md:text-5xl py-10 text-black">Our legacy of excellence</h1>
-    <h1 class="text-left text-lg sm:text-xl md:text-2xl py-2 text-black">
-      At Al-Raghad Group, our commitment to excellence, unparalleled expertise, and unwavering dedication set us apart. Here's what we offer:
+  <div class="px-4 sm:px-8 md:px-20 py-8 counter-section" :dir="isRtl ? 'rtl' : 'ltr'">
+    <h1 :class="[isRtl ? 'text-right' : 'text-left', 'text-3xl sm:text-4xl md:text-5xl py-10 text-black']">
+      {{ t('home.stats.title') }}
+    </h1>
+    <h1 :class="[isRtl ? 'text-right' : 'text-left', 'text-lg sm:text-xl md:text-2xl py-2 text-black']">
+      {{ t('home.stats.subtitle') }}
     </h1>
 
-    <div class="flex  flex-wrap w-[95%] ml-auto mr-auto justify-between  py-20">
-      <div class="counter-container text-hover cursor-pointer w-36 text-left">
-        <div class="  text-hover-child  counter"> over {{ obj1 }}</div>
-        <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Completed Projects</div>
+    <div class="flex flex-wrap w-[95%] ml-auto mr-auto justify-between py-20">
+      <div class="counter-container text-hover cursor-pointer w-36" :class="isRtl ? 'text-right' : 'text-left'">
+        <div class="text-hover-child counter"><span class="text-lg">{{ t('home.stats.over') }}</span> {{ obj1 }}</div>
+        <div class="text-lg sm:text-xl md:text-xl text-gray-500">{{ t('home.stats.completedProjects') }}</div>
       </div>
-        <div class="counter-container text-hover cursor-pointer w-36 text-left">
+      <div class="counter-container text-hover cursor-pointer w-36" :class="isRtl ? 'text-right' : 'text-left'">
         <div class="text-hover-child counter">{{ obj2 }}</div>
-        <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Ongoing Projects</div>
+        <div class="text-lg sm:text-xl md:text-xl text-gray-500">{{ t('home.stats.ongoingProjects') }}</div>
       </div>
-        <div class="counter-container text-hover cursor-pointer w-36 text-left">
+      <div class="counter-container text-hover cursor-pointer w-36" :class="isRtl ? 'text-right' : 'text-left'">
         <div class="text-hover-child counter">{{ obj3 }}</div>
-        <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Different types of spaces</div>
+        <div class="text-lg sm:text-xl md:text-xl text-gray-500">{{ t('home.stats.differentSpaces') }}</div>
       </div>
-
-       <div class="counter-container text-hover cursor-pointer w-36 text-left">
-        <div class="text-hover-child counter">over {{ obj5 }}</div>
-      <div class=" text-lg sm:text-xl md:text-xl text-gray-500">Qualified engineers</div>
+      <div class="counter-container text-hover cursor-pointer w-36" :class="isRtl ? 'text-right' : 'text-left'">
+        <div class="text-hover-child counter"><span class="text-lg">{{ t('home.stats.over') }}</span> {{ obj5 }}</div>
+        <div class="text-lg sm:text-xl md:text-xl text-gray-500">{{ t('home.stats.qualifiedEngineers') }}</div>
       </div>
     </div>
   </div>
 </template>
-
-
 
 <style scoped>
 .counter {

@@ -4,6 +4,7 @@ import { db } from '../../includes/firebase.js';
 import { doc, getDoc } from 'firebase/firestore';
 import Spinner from "@/components/Spinner.vue";
 import { useRoute } from "vue-router";
+import { useI18n } from 'vue-i18n';
 
 const route = useRoute();
 const id = route.params.id;
@@ -13,6 +14,7 @@ const certificate = ref({
   isLoading: true // Add isLoading property for skeleton loading
 });
 const isLoadingPage = ref(true);
+const { t, locale } = useI18n();
 
 async function fetchCertificate() {
   try {
@@ -52,7 +54,13 @@ onMounted(() => {
     </div>
 
     <div v-else>
-      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">Certificate of Appreciation</h1>
+      <h1
+        class="text-3xl md:text-5xl font-bold py-6 text-black"
+        :class="locale === 'ar' ? 'text-right' : 'text-left'"
+        :dir="locale === 'ar' ? 'rtl' : 'ltr'"
+      >
+        {{ t('certificate.title') }}
+      </h1>
 
       <div class="mt-2 mb-4 flex justify-center relative w-full max-w-screen-lg mx-auto">
         <!-- Skeleton loader -->

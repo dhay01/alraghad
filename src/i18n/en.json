@@ -1,0 +1,117 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "projects": "Projects",
+    "clients": "Clients",
+    "jobs": "Jobs",
+    "companyProfile": "Company Profile",
+    "language": "Language"
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to Al-Raghad International Group",
+      "subtitle": "Your Trusted Partner in Engineering Excellence"
+    },
+    "stats": {
+      "title": "Our Legacy of Excellence",
+      "subtitle": "At Al-Raghad Group, our commitment to excellence, unparalleled expertise, and unwavering dedication set us apart. Here's what we offer:",
+      "completedProjects": "Completed Projects",
+      "ongoingProjects": "Ongoing Projects",
+      "differentSpaces": "Different types of spaces",
+      "qualifiedEngineers": "Qualified engineers",
+      "over": "over"
+    },
+    "map": {
+      "title": "We're All Across Iraq",
+      "description": "With a legacy dating back to 1983, we've expanded from Baghdad to serve all of Iraq, specializing in HVAC, MEP, firefighting, and power systems. Our commitment to quality and customer-centric service has earned us the status of a premier contractor.",
+      "regions": {
+        "Babylon": "Babylon",
+        "Al-Anbar": "Al-Anbar",
+        "Diyala": "Diyala",
+        "As-Sulaymaniyah": "As-Sulaymaniyah",
+        "Wasit": "Wasit",
+        "Maysan": "Maysan",
+        "Dhi-Qar": "Dhi-Qar",
+        "Al-Qadisiyah": "Al-Qadisiyah",
+        "Al-Muthanna": "Al-Muthanna",
+        "Al-Basrah": "Al-Basrah",
+        "Baghdad": "Baghdad",
+        "Karbala": "Karbala",
+        "Najaf": "Najaf",
+        "Ninawa": "Ninawa",
+        "Erbil": "Erbil",
+        "Kirkuk": "Kirkuk",
+        "Dohuk": "Dohuk",
+        "Salah Al-Din": "Salah Al-Din"
+      }
+    },
+    "partners": {
+      "title": "Our Partners"
+    },
+    "team": {
+      "title": "Meet Our Team"
+    },
+    "projects": {
+      "title": "Featured Projects"
+    }
+  },
+  "about": {
+    "history": "In 1983, our establishment commenced operations in Baghdad as an electromechanical contracting and engineering services provider. Our core focus has been on delivering superior project management and services, emphasizing robust HVAC, firefighting, power generation, and sewer treatment management practices. By emphasizing a customer-centric approach, upholding contractual obligations with integrity, striving for continuous optimization of engineering quality, and enhancing service excellence, we have achieved the status of a premier first-class contractor since 2009.",
+    "missionTitle": "Mission",
+    "mission": "At Al Raghad Group, our mission is to ensure the seamless and secure operation of projects by continuously elevating professionalism and service quality in construction and MEP contracts. Al Raghad Factory is steadfast in its pursuit of excellence, striving to deliver cutting-edge technology products through meticulous auditing, rigorous quality control, and robust assurance measures. Moreover, we are committed to providing unparalleled after-sales support, including spare parts management, backed by a proficient team specializing in preventive maintenance and repairs.",
+    "visionTitle": "Vision",
+    "vision": "Transforming visions into reality, we specialize in delivering exceptional electromechanical solutions throughout the Middle East, driven by our unwavering focus on quality, safety, and client satisfaction. We aim to emerge as a premier and dependable MEP contracting company in the Middle East and globally, consistently delivering unparalleled quality and exceeding client expectations.",
+    "valuesTitle": "Values",
+    "values": "Comprehensive Planning and Efficient Time Management\nCutting-Edge Engineering Services\nAdherence to the Highest Industry Benchmarks\nEstablishment of Enduring Partnerships with Suppliers and Solution Providers\nProvision of Commissioning and Enhanced Commissioning Services Across All Projects"
+  },
+  "jobs": {
+    "title": "Why Join Us?",
+    "description": "At Al-Raghad International Group, we believe that success begins with an exceptional team.\nWe don’t just provide comprehensive electrical and mechanical services for landmark projects like Al Baraka Mall — we create a supportive, growth-oriented work environment that empowers our people.\nOur work spans HVAC systems, fire fighting systems, domestic water systems, design and implementation of electrical boards, lighting, networks, fire alarm systems, and building automation.\nJoin a team known for expertise, passion, and a commitment to quality — and take part in impactful projects and real opportunities for career advancement.",
+    "openPositions": "Open Positions",
+    "noPositions": "No open positions found"
+    
+    
+  },
+  "scopeOfWork": [
+    {
+      "title": "MEP Works",
+      "description": "We deliver advanced electromechanical solutions for hospitals, airports, and public infrastructure, emphasizing energy efficiency and reliability. Our projects adhere to international standards, fostering lasting partnerships across the Iraqi market."
+    },
+    {
+      "title": "Water Treatment",
+      "description": "From potable water systems to sewage treatment plants, we excel in engineering, procurement, and construction. Our expertise also includes Reverse Osmosis systems and pump station integration."
+    },
+    {
+      "title": "Electrical Infrastructure",
+      "description": "We specialize in power generation, substations, and SCADA systems, providing tailored solutions for infrastructure expansion and rehabilitation. Our work ensures efficient and reliable energy distribution"
+    }
+  ],
+  "reviewCertificatesCards": {
+    "title": "Customer Reviews",
+    "viewCertificate": "View Certificate"
+  },
+  "projectCard": {
+    "location": "Location",
+    "client": "Client",
+    "startingDate": "Starting Date",
+    "readMore": "Read More",
+    "relatedProjects": "Related Projects",
+    "notAvailable": "Not available",
+    "untitledProject": "Untitled Project",
+    "projectNotFound": "Project not found."
+  },
+  "projectDetails": {
+    "date": "Date",
+    "client": "Client",
+    "location": "Location",
+    "discoverMore": "Discover More",
+    "relatedProjects": "Related Projects"
+  },
+  "clients": {
+    "title": "Our Clients"
+  },
+  "certificate": {
+    "title": "Certificate of Appreciation"
+  }
+} 

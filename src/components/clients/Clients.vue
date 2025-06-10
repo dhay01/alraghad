@@ -3,9 +3,11 @@ import { ref, onMounted } from 'vue';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../includes/firebase';
 import Spinner from "@/components/Spinner.vue";
+import { useI18n } from 'vue-i18n';
 
 const clients = ref([]);
 const isLoading = ref(true);
+const { t } = useI18n();
 
 // Fetch clients from Firestore
 async function fetchClients() {
@@ -38,18 +40,26 @@ onMounted(() => {
 
     <!-- Clients Section -->
     <div v-else>
-      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">Our Clients</h1>
+      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">{{ t('clients.title') }}</h1>
 
       <div class="space-y-6">
-        <div v-for="client in clients" :key="client.id" class="client-card flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 p-6 rounded-box bg-gray-50 transition-transform transform hover:scale-105">
+        <div
+          v-for="client in clients"
+          :key="client.id"
+          class="client-card flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:gap-x-6 p-6 rounded-box bg-gray-50 transition-transform transform hover:scale-105"
+          :dir="$i18n && $i18n.locale === 'ar' ? 'rtl' : 'ltr'"
+        >
           <!-- Client Logo -->
-          <div class="logo-container w-56 h-56 md:w-32 md:h-32">
+          <div class="logo-container w-32 h-32">
             <img :src="client.logo" alt="Client Logo" class="object-contain w-full h-full" />
           </div>
-
-          <div class="text-black text-center md:text-left">
-            <h2 class="text-xl md:text-2xl font-semibold">{{ client.name }}</h2>
-<!--            <p class="mt-2 text-gray-700">{{ client.description }}</p>-->
+          <!-- Text -->
+          <div class="text-black text-xl md:text-2xl font-semibold" :class="$i18n && $i18n.locale === 'ar' ? 'text-right' : 'text-left'">
+            {{
+              ($i18n && $i18n.locale === 'ar')
+                ? (client.name_ar || client.name)
+                : (client.name_en || client.name)
+            }}
           </div>
         </div>
       </div>
@@ -72,18 +82,10 @@ onMounted(() => {
 
 .logo-container {
   transition: transform 0.3s;
+  width: 8rem;
+  height: 8rem;
+ 
 }
 
-/* Adjust logo size on smaller screens */
-@media (max-width: 768px) {
-  .logo-container {
-    width: 50px; /* Adjust this size as needed */
-    height: 50px; /* Adjust this size as needed */
-  }
 
-  .client-card {
-    flex-direction: column; /* Stack logo on top of text */
-    align-items: center;
-  }
-}
 </style>
