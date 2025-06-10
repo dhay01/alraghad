@@ -24,16 +24,17 @@ function handleImageLoad() {
   isLoading.value = false;
 }
 
-const projectTitle = computed(() => {
-  if (locale.value === 'ar' && props.project.title_ar) {
-    return props.project.title_ar;
-  }
-  return props.project.title_en || props.project.title || '';
-});
+function getLocalized(field, project) {
+  if (locale.value === 'ar' && project[field + '_ar']) return project[field + '_ar'];
+  if (locale.value === 'en' && project[field + '_en']) return project[field + '_en'];
+  return project[field] || t('projectCard.notAvailable');
+}
+
+const isRTL = computed(() => locale.value === 'ar');
 </script>
 
 <template>
-  <div class="card w-full md:w-96">
+  <div class="card w-full md:w-96" :dir="isRTL ? 'rtl' : 'ltr'">
     <figure class="relative">
       <!-- Show skeleton only if isLoading is true -->
       <div v-if="isLoading" class="skeleton w-full h-80 rounded-3xl p-2"></div>
@@ -49,17 +50,17 @@ const projectTitle = computed(() => {
       />
     </figure>
     <div class="card-body w-[100%] text-black">
-      <h2 @click="navigateToProject" :dir="locale.value === 'ar' ? 'rtl' : 'ltr'" class="cursor-pointer card-title">{{ projectTitle }}</h2>
-      <div class="grid grid-cols-2  gap-4 md:gap-16">
+      <h2 @click="navigateToProject" class="cursor-pointer card-title">{{ getLocalized('title', project) }}</h2>
+      <div class="grid grid-cols-2 gap-4 md:gap-16">
         <div>
-          <p class="text-sm">{{ t('projectCard.location') }}: </p>
-          <p class="text-sm">{{ t('projectCard.client') }}: </p>
-          <p class="text-sm">{{ t('projectCard.startingDate') }}: </p>
+          <p class="text-sm font-semibold">{{ t('projectCard.location') }}:</p>
+          <p class="text-sm font-semibold">{{ t('projectCard.client') }}:</p>
+          <p class="text-sm font-semibold">{{ t('projectCard.startingDate') }}:</p>
         </div>
         <div>
-          <p class="text-sm">{{ project.location }}</p>
-          <p class="text-sm whitespace-nowrap">{{ project.client }}</p>
-          <p class="text-sm">{{ project.date }}</p>
+          <p class="text-sm">{{ getLocalized('location', project) }}</p>
+          <p class="text-sm whitespace-nowrap">{{ getLocalized('client', project) }}</p>
+          <p class="text-sm">{{ project.date || t('projectCard.notAvailable') }}</p>
         </div>
       </div>
       <div class="card-actions py-4 w-full justify-end">
@@ -75,6 +76,7 @@ const projectTitle = computed(() => {
               fill="none"
               class="svg"
               xmlns="http://www.w3.org/2000/svg"
+              :class="isRTL ? 'rotate-180' : ''"
           >
             <path
                 fill-rule="evenodd"

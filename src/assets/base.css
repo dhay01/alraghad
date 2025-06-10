@@ -648,7 +648,9 @@ html {
 }
 
 .container {
-  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px; /* for some side spacing on mobile */
 }
 
 @media (min-width: 640px) {
@@ -3673,4 +3675,8 @@ details.collapse summary::-webkit-details-marker {
 
 [dir="rtl"] a, body[dir="rtl"] a {
   font-family: 'Tajawal', sans-serif !important;
+}
+
+body[dir="ltr"], [dir="ltr"] {
+  font-family: 'Ubuntu', ui-sans-serif, system-ui, sans-serif !important;
 }

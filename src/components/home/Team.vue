@@ -20,9 +20,9 @@ async function fetchTeam() {
         .map(doc => ({
           id: doc.id,
           ...doc.data(),
-          isLoading: true // Add isLoading property for each team member
+          isLoading: true 
         }))
-        .sort((a, b) => a.no - b.no); // Sorting by 'no' field
+        .sort((a, b) => a.no - b.no); 
   } catch (error) {
     console.error('Error fetching team members:', error);
   }
@@ -34,7 +34,7 @@ function handleImageLoad(member) {
 
 // Dynamic classes to adjust font size based on text length
 function nameClass(name) {
-  if (name.length > 15) return 'text-base'; // Smaller for longer names
+  if (name.length > 15) return 'text-base'; 
   if (name.length > 10) return 'text-lg';
   return 'text-xl';
 }
@@ -43,6 +43,19 @@ function positionClass(position) {
   if (position.length > 20) return 'text-xs'; // Smaller for longer positions
   return 'text-sm';
 }
+
+// Add computed properties for translated fields
+const getTranslatedName = (member) => {
+  if (locale.value === 'ar' && member.name_ar) return member.name_ar;
+  if (locale.value === 'en' && member.name_en) return member.name_en;
+  return member.name || '';
+};
+
+const getTranslatedPosition = (member) => {
+  if (locale.value === 'ar' && member.position_ar) return member.position_ar;
+  if (locale.value === 'en' && member.position_en) return member.position_en;
+  return member.position || '';
+};
 
 onMounted(fetchTeam);
 
@@ -60,8 +73,6 @@ const isRtl = computed(() => locale.value === 'ar');
           :numVisible="5" 
           :numScroll="1" 
           :responsiveOptions="responsiveOptions"
-          
-          
         >
           <template #item="slotProps">
             <div class="team-member mr-4 relative">
@@ -74,7 +85,7 @@ const isRtl = computed(() => locale.value === 'ar');
                     v-show="!slotProps.data.isLoading"
                     :src="slotProps.data.photo || '/src/assets/placeholder.jpg'"
                     @load="handleImageLoad(slotProps.data)"
-                    :alt="slotProps.data.name"
+                    :alt="getTranslatedName(slotProps.data)"
                     class="w-full h-full object-cover rounded-lg"
                 />
               </div>
@@ -82,8 +93,8 @@ const isRtl = computed(() => locale.value === 'ar');
               <!-- Overlay with name and position -->
               <div class="overlay absolute inset-0 bg-black bg-opacity-20 flex flex-col justify-end text-white p-4 opacity-0 hover:opacity-100 transition-opacity rounded-lg">
                 <div class="text-container">
-                  <h1 :class="[nameClass(slotProps.data.name), isRtl ? 'text-right' : 'text-left', 'font-medium']">{{ slotProps.data.name }}</h1>
-                  <p :class="[positionClass(slotProps.data.position), isRtl ? 'text-right' : 'text-left']">{{ slotProps.data.position }}</p>
+                  <h1 :class="[nameClass(getTranslatedName(slotProps.data)), isRtl ? 'text-right' : 'text-left', 'font-medium']">{{ getTranslatedName(slotProps.data) }}</h1>
+                  <p :class="[positionClass(getTranslatedPosition(slotProps.data)), isRtl ? 'text-right' : 'text-left']">{{ getTranslatedPosition(slotProps.data) }}</p>
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../includes/firebase';
@@ -8,13 +8,21 @@ import empty from "@/assets/empty.png";
 import Hero from "@/components/projects/Hero.vue"
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const categories = ['MEP', 'Civil',  'Investment'];
 const selectedCategory = ref(categories[0]);
 const filteredProjects = ref([]);
 const isLoading = ref(true);
 const router = useRouter();
+
+function getLocalized(field, project) {
+  if (locale.value === 'ar' && project[field + '_ar']) return project[field + '_ar'];
+  if (locale.value === 'en' && project[field + '_en']) return project[field + '_en'];
+  return project[field] || t('projectCard.notAvailable');
+}
+
+const isRTL = computed(() => locale.value === 'ar');
 
 async function fetchProjectsByCategory(category) {
   selectedCategory.value = category;
@@ -48,13 +56,15 @@ onMounted(() => {
 
 <template>
   <Hero/>
-  <div class="container min-h-screen mx-auto px-5 sm:px-10 py-20">
+  <div class="container min-h-screen mx-auto px-5 sm:px-10 py-20" :dir="isRTL ? 'rtl' : 'ltr'">
     <!-- Loading Spinner -->
     <div v-if="isLoading" class="text-center md:px-[48%] px-[40%] py-[10%] md:py-[20%]">
       <Spinner />
     </div>
     <div v-else>
-      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black">{{ t('home.projects.title') }}</h1>
+      <h1 class="text-3xl md:text-5xl font-bold py-6 text-black" :class="isRTL ? 'text-right' : 'text-left'">
+        {{ t('home.projects.title') }}
+      </h1>
 
       <!-- Categories Buttons -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 py-6">
@@ -84,18 +94,14 @@ onMounted(() => {
             />
           </figure>
           <div class="card-body text-black">
-            <h2 class="card-title">{{ project.title }}</h2>
-            <div class="grid grid-cols-2 gap-2 md:gap-8">
-              <div>
-                <p class="text-sm">{{ t('projectCard.location') }}:</p>
-                <p class="text-sm">{{ t('projectCard.client') }}:</p>
-                <p class="text-sm">{{ t('projectCard.startingDate') }}:</p>
-              </div>
-              <div>
-                <p class="text-sm">{{ project.location }}</p>
-                <p class="text-sm whitespace-nowrap">{{ project.client }}</p>
-                <p class="text-sm">{{ project.date }}</p>
-              </div>
+            <h2 class="card-title break-words whitespace-normal">{{ getLocalized('title', project) }}</h2>
+            <div class="grid grid-cols-2 gap-x-2 gap-y-1 md:gap-x-8 md:gap-y-2">
+              <p class="text-sm font-semibold break-words whitespace-normal">{{ t('projectCard.location') }}:</p>
+              <p class="text-sm break-words whitespace-normal">{{ getLocalized('location', project) }}</p>
+              <p class="text-sm font-semibold break-words whitespace-normal">{{ t('projectCard.client') }}:</p>
+              <p class="text-sm break-words whitespace-normal">{{ getLocalized('client', project) }}</p>
+              <p class="text-sm font-semibold break-words whitespace-normal">{{ t('projectCard.startingDate') }}:</p>
+              <p class="text-sm break-words whitespace-normal">{{ project.date || t('projectCard.notAvailable') }}</p>
             </div>
             <div class="card-actions py-3 w-full justify-end">
               <button
@@ -110,6 +116,7 @@ onMounted(() => {
                     fill="none"
                     class="svg"
                     xmlns="http://www.w3.org/2000/svg"
+                    :class="isRTL ? 'rotate-180' : ''"
                 >
                   <path
                       fill-rule="evenodd"

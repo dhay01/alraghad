@@ -9,6 +9,11 @@ export default {
             colors: {
                 primaryBlue: '#422A86',
             },
+            fontFamily: {
+                ubuntu: ['Ubuntu', 'sans-serif'],
+                // openSans: ['Open Sans', 'sans-serif'],
+                tajawal: ['Tajawal', 'sans-serif'],
+            },
         },
     },
     daisyui: {
